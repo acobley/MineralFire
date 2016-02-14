@@ -17,14 +17,7 @@ void setup() {
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(10, OUTPUT);
-  Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
-  Serial.println("Start");
-  Serial.println(BPM);
-  Serial.println(BPQ);
-  Serial.println(Baserate);
+  
 }
 
 void SetPin(int pin, boolean state){
