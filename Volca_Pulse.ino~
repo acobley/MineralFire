@@ -52,7 +52,7 @@ void loop() {
       StartCount(2);  
   Pulse();
   Counter++;
-  if (Counter >=Totaltime)
+  if (Counter >Totaltime)
      Counter=0;
   
 }
