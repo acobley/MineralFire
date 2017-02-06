@@ -10,6 +10,8 @@ int Baserate=(int)((1.0/BPQ)*1000);
 int Totaltime = 4* Baserate; // so we can get 4 times
 int Halfrate = Totaltime/2; 
 
+const byte interruptPin = 2;
+
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin 13 as an output.
@@ -17,13 +19,16 @@ void setup() {
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(10, OUTPUT);
-  
+   attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, CHANGE);
 }
 
 void SetPin(int pin, boolean state){
   
     digitalWrite(pins[pin], state);
   
+}
+void StartCount(){
+  StartCount(0);
 }
 
 void StartCount(int pin){
@@ -44,8 +49,7 @@ void loop() {
  
   delay(1);
   
-  if ((Counter % Baserate) ==0)
-      StartCount(0);
+  
   if  ((Counter % Halfrate) ==0)
       StartCount(1);
   if  ((Counter % Totaltime) ==0)
