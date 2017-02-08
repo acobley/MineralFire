@@ -10,6 +10,9 @@ int Baserate=(int)((1.0/BPQ)*1000);
 int Totaltime = 4* Baserate; // so we can get 4 times
 int Halfrate = Totaltime/2; 
 
+int SeqLength=8;
+int Bars=1;
+
 const byte interruptPin = 2;
 
 // the setup function runs once when you press reset or power the board
@@ -29,7 +32,7 @@ void SetPin(int pin, boolean state){
   
 }
 void StartCount(){
-  StartCount(0);
+  StartCount(1);
 }
 
 void StartCount(int pin){
