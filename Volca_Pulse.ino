@@ -3,12 +3,7 @@ int Counter=0;
 boolean state[]={false,false,false,false};
 int pins[]={13,12,11,10};
 int pulsecount[]={0,0,0,0};
-int BPM=60;
-int BPQ=(int)(BPM*4/60);
 
-int Baserate=(int)((1.0/BPQ)*1000);
-int Totaltime = 4* Baserate; // so we can get 4 times
-int Halfrate = Totaltime/2; 
 
 int SeqLength=8;
 int Bars=1;
@@ -27,10 +22,9 @@ void setup() {
 }
 
 void SetPin(int pin, boolean state){
-  
     digitalWrite(pins[pin], state);
-  
 }
+
 void StartCount(){
   StartCount(1);
 }
@@ -60,15 +54,7 @@ void Pulse(){
 void loop() {
  
   delay(1);
-  
-  
-  if  ((Counter % Halfrate) ==0)
-      StartCount(1);
-  if  ((Counter % Totaltime) ==0)
-      StartCount(2);  
   Pulse();
-  Counter++;
-  if (Counter >=Totaltime)
-     Counter=0;
+  
   
 }
