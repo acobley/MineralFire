@@ -26,7 +26,13 @@ void SetPin(int pin, boolean state){
 }
 
 void StartCount(){
-  StartCount(1);
+  Counter++;
+ 
+  if (Counter >=SeqLength){
+       StartCount(1);
+       Counter=0;
+  }
+    
 }
 
 void StartCount(int pin){
