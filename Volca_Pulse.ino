@@ -19,6 +19,7 @@ void setup() {
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(10, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
    attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, CHANGE);
 }
 
@@ -37,10 +38,18 @@ void StartCount(int pin){
 
 void Pulse(){
   for (int i=0;i<4;i++){
-    if (pulsecount[i]<16)
+    if (pulsecount[i]<16){
+      if (i==0){
+          digitalWrite(LED_BUILTIN, HIGH);
+      }
        SetPin(i,HIGH);
-    else 
+    }   
+    else {
+      if (i==0){
+           digitalWrite(LED_BUILTIN, LOW); 
+      }
         SetPin(i,LOW);
+    }    
     pulsecount[i]++;
   }
 }
