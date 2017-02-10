@@ -20,37 +20,45 @@ void setup() {
   pinMode(10, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, RISING);
+  Serial.begin(9600);  
 }
 
 
 
 void SetPin(int pin, boolean state) {
   digitalWrite(pins[pin], state);
+  
 }
 
 void StartCount() {
   Counter++;
-  if (Counter >= SeqLength * Bars) {
+  Serial.print(Counter); 
+  Serial.print("  :  ");
+  if (Counter >= (SeqLength * Bars)) {
     Pulse();
     Counter = 0;
+    
   }
 }
 
 
 void Pulse() {
-  int i = 0;
-  digitalWrite(LED_BUILTIN, HIGH);
+  
+  Serial.println(" Pulse");
+  int i=0;
   SetPin(0, HIGH);
-  for (i = 0; i < 16; i++) {
-    delay(1);
+  for (i=0;i<1000;i++){
+    int j=i*10;
   }
-  digitalWrite(LED_BUILTIN, LOW);
+Serial.println(" end");
   SetPin(0, LOW);
 
 }
 // the loop function runs over and over again forever
 void loop() {
 
-
+while (true){
+  delay(1);
+}
 
 }
