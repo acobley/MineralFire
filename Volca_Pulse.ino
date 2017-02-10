@@ -2,8 +2,9 @@
 int Counter = 0;
 boolean state[] = {false, false, false, false};
 int pins[] = {13, 12, 11, 10};
-int pulsecount[] = {0, 0, 0, 0};
-
+int BarsCount[]={3,1,2,2};
+int BarCount =0; //the element of the BarsCount Array
+int CurrentBar=1; //how far through the current Bars we are
 
 int SeqLength = 8;
 int Bars = 1;
@@ -21,6 +22,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, RISING);
   Serial.begin(9600);  
+  Bars=BarsCount[BarCount];
 }
 
 
@@ -37,6 +39,14 @@ void StartCount() {
   if (Counter >= (SeqLength * Bars)) {
     Pulse();
     Counter = 0;
+    CurrentBar++;
+    if (CurrentBar > Bars){
+      BarCount++;
+      if (BarCount >3)
+         BarCount=0;
+      CurrentBar=1;
+      Bars=BarsCount[BarCount];
+    }
     
   }
 }
