@@ -3,10 +3,11 @@ int Counter = 0;
 boolean state[] = {false, false, false, false};
 int pins[] = {13, 12, 11, 10};
 int BarsCount[]={3,1,2,2};
+int SeqLengths[]={8,4,8,4};
 int BarCount =0; //the element of the BarsCount Array
 int CurrentBar=1; //how far through the current Bars we are
 
-int SeqLength = 8;
+int SeqLength = SeqLengths[BarCount];
 int Bars = 1;
 
 const byte interruptPin = 2;
@@ -46,6 +47,7 @@ void StartCount() {
          BarCount=0;
       CurrentBar=1;
       Bars=BarsCount[BarCount];
+      SeqLength = SeqLengths[BarCount];
     }
     
   }
