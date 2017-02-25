@@ -5,13 +5,15 @@ boolean state[] = {false, false, false, false};
 int pins[] = {13, 12, 11, 10};
 int BarsCount[]={3,1,2,2};
 int SeqLengths[]={16,8,16,8};
-int BarCount =0; //the element of the BarsCount Array
+int ElementCount =0; //the element of the BarsCount Array
 int CurrentBar=1; //how far through the current Bars we are
 
-int SeqLength = SeqLengths[BarCount];
-int Bars = 1;
+int CurrentSeqLength = SeqLengths[ElementCount];
+int CurrentBarsLength = BarsCount[ElementCount];;
 
 const byte interruptPin = 2;
+const byte switchinterruptPin = 3;
+
 SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
 
@@ -27,7 +29,7 @@ void setup() {
   Serial.begin(9600);  
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
-  Bars=BarsCount[BarCount];
+  
 }
 
 
@@ -39,23 +41,36 @@ void SetPin(int pin, boolean state) {
 
 void StartCount() {
   Counter++;
-  int tmp=(SeqLength * Bars)*100+Counter;
+  int maxCounter =CurrentSeqLength * CurrentBarsLength;
+  int tmp =(maxCounter)*100+Counter;
+  if (Counter %4 ==0)
+     tmp=CurrentSeqLength *100+ CurrentBarsLength;
+  
+    if (Counter %8 ==0)
+     tmp=ElementCount;
   
   sprintf(tempString, "%4d", tmp); //Convert deciSecond into a string that is right adjusted
+  
+  int brightnessLevel=64;
+  
+  brightnessLevel=2+(int)(((float)((float)Counter/(float)maxCounter))*(32.0));
+ //Serial.print(brightnessLevel);
+  Serial7Segment.write(0x7A);  // Brightness control command
+  Serial7Segment.write((byte) brightnessLevel);  // 0 is dimmest, 255 is brightest
   Serial7Segment.print(tempString); //Send serial string out the soft serial port to the S7S
 
-  if (Counter >= (SeqLength * Bars)) {
+  if (Counter >= (maxCounter )) {
     Pulse();
     Counter = 0;
     CurrentBar++;
-    if (CurrentBar > Bars){
-      BarCount++;
-      if (BarCount >3)
-         BarCount=0;
+    
+      ElementCount++;
+      if (ElementCount >3)
+         ElementCount=0;
       CurrentBar=1;
-      Bars=BarsCount[BarCount];
-      SeqLength = SeqLengths[BarCount];
-    }
+      CurrentBarsLength=BarsCount[ElementCount];
+      CurrentSeqLength = SeqLengths[ElementCount];
+    
     
   }
 }
@@ -76,9 +91,6 @@ void Pulse() {
 // the loop function runs over and over again forever
 void loop() {
 
-while (true){
-    int cycles= BarCount;
 
-}
 
 }
