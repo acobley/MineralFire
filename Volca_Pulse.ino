@@ -1,20 +1,20 @@
 #include <SoftwareSerial.h>
 
-int Counter = 0;
+volatile int Counter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running =false;
 int pins[] = {13, 12, 11, 10};
 int BarsCount[]={3,1,2,2};
 int SeqLengths[]={16,8,16,8};
-int ElementCount =0; //the element of the BarsCount Array
-int CurrentBar=1; //how far through the current Bars we are
+volatile int ElementCount =0; //the element of the BarsCount Array
+volatile int CurrentBar=1; //how far through the current Bars we are
 
 int CurrentSeqLength = SeqLengths[ElementCount];
 int CurrentBarsLength = BarsCount[ElementCount];;
 
 const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
-
+const int Switch=9; // We need this connection because we can't read the interrupt pin (I think!)
 SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
 
@@ -25,11 +25,11 @@ void setup() {
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(10, OUTPUT);
+  pinMode(Switch,INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, RISING);
-  attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING);
-  attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Stop, FALLING);
-  Serial.begin(9600);  
+  attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
+   Serial.begin(9600);  
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
   
@@ -40,11 +40,13 @@ void Run(){
   ElementCount=0;
   CurrentBar=1;
   running = true;
+  Serial7Segment.print("RRRR"); //Send serial string out the soft serial port to the S7S
   
 }
 
 void Stop(){
   running =false;
+   Serial7Segment.print("5555"); //Send serial string out the soft serial port to the S7S
 }
 
 void SetPin(int pin, boolean state) {
@@ -53,7 +55,10 @@ void SetPin(int pin, boolean state) {
 }
 
 void StartCount() {
-  if (running=true){
+  if (digitalRead(Switch) ==LOW){
+     Stop();
+  }
+  if (running==true){
     Counter++;
     int maxCounter =CurrentSeqLength * CurrentBarsLength;
     int tmp =(maxCounter)*100+Counter;
