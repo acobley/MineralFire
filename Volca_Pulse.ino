@@ -102,7 +102,7 @@ void Pulse() {
   int i=0;
   SetPin(0, HIGH);
   for (i=0;i<1000;i++){
-    int j=i*10;
+    int j=i*10; //Add some delay work
   }
 
   SetPin(0, LOW);
