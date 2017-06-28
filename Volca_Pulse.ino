@@ -1,16 +1,16 @@
 #include <SoftwareSerial.h>
 
-volatile int Counter = 0;
+volatile int DivPulseCounter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running =false;
 int pins[] = {13, 12, 11, 10};
-int BarsCount[]={3,1,2,2};
-int SeqLengths[]={16,8,16,8};
-volatile int ElementCount =0; //the element of the BarsCount Array
-volatile int CurrentBar=1; //how far through the current Bars we are
+int DivFactors[]={1,2,1,1};
+int NumberBeats[]={8,8,4,4};
+volatile int CurrentFactor =0; //the element of the DivFactors Array
+volatile int CurrentBeatArray=0; //how far through the current Bars we are
 
-int CurrentSeqLength = SeqLengths[ElementCount];
-int CurrentBarsLength = BarsCount[ElementCount];;
+int CurrentDivFactor = DivFactors[CurrentFactor];
+int CurrentBarsLength = NumberBeats[CurrentBeatArray];;
 
 const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
@@ -27,18 +27,18 @@ void setup() {
   pinMode(10, OUTPUT);
   pinMode(Switch,INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), StartCount, RISING);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
-   Serial.begin(9600);  
+  Serial.begin(9600);  
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
   
 }
 
 void Run(){
-  Counter = 0;
-  ElementCount=0;
-  CurrentBar=1;
+  DivPulseCounter = 0;
+  CurrentFactor=0;
+  CurrentBeatArray=0;
   running = true;
   Serial7Segment.print("RRRR"); //Send serial string out the soft serial port to the S7S
   
@@ -54,44 +54,26 @@ void SetPin(int pin, boolean state) {
   
 }
 
-void StartCount() {
+void HandleClock() {
   if (digitalRead(Switch) ==LOW){
      Stop();
   }
   if (running==true){
-    Counter++;
-    int maxCounter =CurrentSeqLength * CurrentBarsLength;
-    int tmp =(maxCounter)*100+Counter;
-    if (Counter %4 ==0)
-       tmp=CurrentSeqLength *100+ CurrentBarsLength;
     
-      if (Counter %8 ==0)
-       tmp=ElementCount;
-    
+    int tmp=DivPulseCounter;
     sprintf(tempString, "%4d", tmp); //Convert deciSecond into a string that is right adjusted
-    
-    int brightnessLevel=64;
-    
-    brightnessLevel=2+(int)(((float)((float)Counter/(float)maxCounter))*(32.0));
-   //Serial.print(brightnessLevel);
-    Serial7Segment.write(0x7A);  // Brightness control command
-    Serial7Segment.write((byte) brightnessLevel);  // 0 is dimmest, 255 is brightest
-    Serial7Segment.print(tempString); //Send serial string out the soft serial port to the S7S
   
-    if (Counter >= (maxCounter )) {
-      Pulse();
-      Counter = 0;
-      CurrentBar++;
+    Serial7Segment.print(tempString); //Send serial string out the soft serial port to the S7S
+    if (DivPulseCounter < CurrentDivFactor){
+   
       
-        ElementCount++;
-        if (ElementCount >3)
-           ElementCount=0;
-        CurrentBar=1;
-        CurrentBarsLength=BarsCount[ElementCount];
-        CurrentSeqLength = SeqLengths[ElementCount];
-      
-      
+      DivPulseCounter++;
+      if (DivPulseCounter >=CurrentDivFactor){\
+         Pulse();
+         DivPulseCounter=0;
+      }
     }
+      
   }
 }
 
