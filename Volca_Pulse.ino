@@ -4,7 +4,7 @@ volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running = false;
-int pins[] = {13, 12, 11, 10};
+int pins[] = {13, 12};
 byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to a sensible
 
 
@@ -28,11 +28,13 @@ byte CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
 
 const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
-const int Switch = 9; // We need this connection because we can't read the interrupt pin (I think!)
+
 const int SW11 = 4; //These define the two switches for selecting patterns
 const int SW12 = 5;
 const int SW21 = 7;
 const int SW22 = 6;
+const int SW31= A0;
+const int SW32 = A1; 
 
 SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
@@ -40,33 +42,51 @@ char tempString[10]; //Used for sprintf
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin 13 as an output.
+
   pinMode(13, OUTPUT);
   pinMode(12, OUTPUT);
-  pinMode(11, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(Switch, INPUT);
+
   pinMode(SW11, INPUT);
   pinMode(SW12, INPUT);
   pinMode(SW21, INPUT);
   pinMode(SW22, INPUT);
+  pinMode(SW31, INPUT);
+  pinMode(SW32, INPUT);
+  
   pinMode(LED_BUILTIN, OUTPUT);
+  
   attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
   Serial.begin(9600);
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
-
+  Serial7Segment.print("H_H_"); //Send serial string out the soft serial port to the S7S
+ 
+  running =false;
 }
-
+unsigned long oldtime=0;
+const unsigned long bouncedelay =500UL; 
 void Run() {
+
+  if (oldtime==0){
+    oldtime=millis();
+    return;
+    }
+  unsigned long newtime=millis();
+  if ((newtime -oldtime) <bouncedelay){
+    oldtime=newtime;
+    return;
+  }
+   oldtime=0;
   if (running == false) {
     DivPulseCounter = 0;
     NumPulseCounter = 0;
     running = true;
-    Serial7Segment.print("RRRR"); //Send serial string out the soft serial port to the S7S
+    Serial7Segment.print("R_R_"); //Send serial string out the soft serial port to the S7S
   } else {
     running = false;
   }
+  Serial.println("end int");
 }
 
 
