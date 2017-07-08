@@ -19,6 +19,7 @@ int NumberPulses[3][4] = {{8, 8, 4, 8},
 
 byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
+byte ModeSwitch=1;
 
 volatile byte CurrentPtr = 0; //how far through the current Bars we are
 
@@ -82,6 +83,8 @@ void Run() {
     DivPulseCounter = 0;
     NumPulseCounter = 0;
     running = true;
+    CurrentDivFactor = DivFactors[DivSwitch][CurrentPtr];
+    CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
     Serial7Segment.print("R_R_"); //Send serial string out the soft serial port to the S7S
   } else {
     running = false;
@@ -125,6 +128,8 @@ void ReadPatternSwitches() {
   byte cSW12 = 1;
   byte cSW21 = 1;
   byte cSW22 = 1;
+  byte cSW31 = 1;
+  byte cSW32 =1;
   if (digitalRead(SW11) == LOW) {
     cSW11 = 0;
   }
@@ -138,18 +143,24 @@ void ReadPatternSwitches() {
   if (digitalRead(SW22) == LOW) {
     cSW22 = 0;
   }
+
+  if (digitalRead(SW31) == LOW) {
+    cSW31 = 0;
+  }
+  if (digitalRead(SW32) == LOW) {
+    cSW32 = 0;
+  }
   byte SW1 = 2 * cSW12 + cSW11;
   SW1 = SwitchConvert[SW1 - 1];
-
-
   byte SW2 = 2 * cSW21 + cSW22;
   SW2 = SwitchConvert[SW2 - 1];
+  byte SW3 =  2 * cSW31 + cSW32;
   DivSwitch = SW1 - 1;
   PulseSwitch = SW2 - 1;
+  ModeSwitch=SW3;
 
-  int tmp = SW1 + 100 * SW2;
   if (running == false) {
-    DisplayNumbers(110, SW2, 110, SW1);
+    DisplayNumbers(SW3, SW2, 110, SW1);
   }
 }
 
@@ -169,9 +180,13 @@ void HandleClock() {
         DivPulseCounter = 0;
       }
     }
-    if (NumPulseCounter < CurrentPulseLength) {
+    byte endCon=CurrentPulseLength;
+    if (ModeSwitch==2){
+      endCon=CurrentPulseLength*CurrentDivFactor;
+    }
+    if (NumPulseCounter < endCon) {
       NumPulseCounter++;
-      if (NumPulseCounter >= CurrentPulseLength) {
+      if (NumPulseCounter >= endCon) {
         NumPulseCounter = 0;
         CurrentPtr++;
         if (CurrentPtr < 4) {
