@@ -1,3 +1,12 @@
 # Volca_Pulse
 
-Softeware for MineralFire Eurorack module.
+Software for MineralFire Eurorack module.
+
+This is an Arduino based programmable clock divider.  
+
+NOTES
+The Most up to date branch is "AltCounter"
+
+The hardware design is in testing, do not use for production. 
+
+The Software works, but is still under development.
