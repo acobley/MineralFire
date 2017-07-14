@@ -4505,6 +4505,107 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="74ttl-din">
+<description>&lt;b&gt;TTL Devices with DIN Symbols&lt;/b&gt;&lt;p&gt;
+CadSoft and the author do not warrant that this library is free from error
+or will meet your specific requirements.&lt;p&gt;
+&lt;author&gt;Created by Holger Bettenbühl, hol.bet.@rhein-main.net&lt;/author&gt;</description>
+<packages>
+<package name="DIL14">
+<description>&lt;b&gt;Dual In Line Package&lt;/b&gt;</description>
+<wire x1="8.89" y1="2.921" x2="-8.89" y2="2.921" width="0.1524" layer="21"/>
+<wire x1="-8.89" y1="-2.921" x2="8.89" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="8.89" y1="2.921" x2="8.89" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="-8.89" y1="2.921" x2="-8.89" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-8.89" y1="-2.921" x2="-8.89" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="-8.89" y1="1.016" x2="-8.89" y2="-1.016" width="0.1524" layer="21" curve="-180"/>
+<pad name="1" x="-7.62" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="2" x="-5.08" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="7" x="7.62" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="8" x="7.62" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="3" x="-2.54" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="4" x="0" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="6" x="5.08" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="5" x="2.54" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="9" x="5.08" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="10" x="2.54" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="11" x="0" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="12" x="-2.54" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="13" x="-5.08" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="14" x="-7.62" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<text x="-9.271" y="-3.048" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="-6.731" y="-0.635" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="+UB">
+<circle x="0" y="-0.635" radius="0.635" width="0.1524" layer="94"/>
+<text x="1.27" y="-1.27" size="1.524" layer="95">&gt;NAME</text>
+<pin name="+UB" x="0" y="2.54" visible="pad" length="short" direction="pwr" rot="R270"/>
+</symbol>
+<symbol name="-UB">
+<wire x1="0" y1="-0.635" x2="0" y2="0.635" width="0" layer="94"/>
+<wire x1="0.635" y1="0" x2="-0.635" y2="0" width="0" layer="94"/>
+<circle x="0" y="0.635" radius="0.635" width="0.1524" layer="94"/>
+<text x="1.27" y="0" size="1.524" layer="95">&gt;NAME</text>
+<pin name="-UB" x="0" y="-2.54" visible="pad" length="short" direction="pwr" rot="R90"/>
+</symbol>
+<symbol name="08">
+<wire x1="-5.08" y1="-5.08" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-5.08" y2="2.54" width="0.1524" layer="94"/>
+<wire x1="-7.62" y1="-2.54" x2="-5.08" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="-5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="0" x2="7.62" y2="0" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="5.715" size="2.032" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-8.255" size="2.032" layer="96">&gt;VALUE</text>
+<text x="-0.635" y="1.905" size="2.032" layer="94">&amp;</text>
+<pin name="A" x="-10.16" y="2.54" visible="pad" length="short" direction="in" swaplevel="1"/>
+<pin name="B" x="-10.16" y="-2.54" visible="pad" length="short" direction="in" swaplevel="1"/>
+<pin name="Y" x="10.16" y="0" visible="pad" length="short" direction="out" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="74*08" prefix="V">
+<description>Quad 2-input &lt;b&gt;AND&lt;/b&gt; gate</description>
+<gates>
+<gate name="/+UB" symbol="+UB" x="12.7" y="12.7" addlevel="request"/>
+<gate name="/-UB" symbol="-UB" x="12.7" y="5.08" addlevel="request"/>
+<gate name="/1" symbol="08" x="0" y="0" swaplevel="1"/>
+<gate name="/2" symbol="08" x="0" y="17.78" swaplevel="1"/>
+<gate name="/3" symbol="08" x="-22.86" y="0" swaplevel="1"/>
+<gate name="/4" symbol="08" x="-22.86" y="17.78" swaplevel="1"/>
+</gates>
+<devices>
+<device name="N" package="DIL14">
+<connects>
+<connect gate="/+UB" pin="+UB" pad="14"/>
+<connect gate="/-UB" pin="-UB" pad="7"/>
+<connect gate="/1" pin="A" pad="1"/>
+<connect gate="/1" pin="B" pad="2"/>
+<connect gate="/1" pin="Y" pad="3"/>
+<connect gate="/2" pin="A" pad="4"/>
+<connect gate="/2" pin="B" pad="5"/>
+<connect gate="/2" pin="Y" pad="6"/>
+<connect gate="/3" pin="A" pad="9"/>
+<connect gate="/3" pin="B" pad="10"/>
+<connect gate="/3" pin="Y" pad="8"/>
+<connect gate="/4" pin="A" pad="12"/>
+<connect gate="/4" pin="B" pad="13"/>
+<connect gate="/4" pin="Y" pad="11"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -4614,6 +4715,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="BUT1" library="INSTRUO" deviceset="PB6149L-5" device="" value="PB6149L-5"/>
 <part name="R27" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
 <part name="SUPPLY30" library="supply2" deviceset="GND" device=""/>
+<part name="V1" library="74ttl-din" deviceset="74*08" device="N"/>
+<part name="SUPPLY28" library="supply2" deviceset="+5V" device=""/>
+<part name="SUPPLY29" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4723,6 +4827,11 @@ Workshop of Telescopes</text>
 <instance part="BUT1" gate="G$2" x="91.44" y="142.24" rot="R90"/>
 <instance part="R27" gate="G$1" x="76.2" y="142.24"/>
 <instance part="SUPPLY30" gate="GND" x="101.6" y="134.62"/>
+<instance part="V1" gate="/1" x="170.18" y="66.04"/>
+<instance part="V1" gate="/+UB" x="203.2" y="73.66"/>
+<instance part="SUPPLY28" gate="+5V" x="203.2" y="83.82"/>
+<instance part="V1" gate="/-UB" x="203.2" y="63.5"/>
+<instance part="SUPPLY29" gate="GND" x="203.2" y="53.34"/>
 </instances>
 <busses>
 </busses>
@@ -4933,6 +5042,11 @@ Workshop of Telescopes</text>
 <wire x1="101.6" y1="142.24" x2="101.6" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="SUPPLY30" gate="GND" pin="GND"/>
 </segment>
+<segment>
+<pinref part="V1" gate="/-UB" pin="-UB"/>
+<wire x1="203.2" y1="60.96" x2="203.2" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="SUPPLY29" gate="GND" pin="GND"/>
+</segment>
 </net>
 <net name="RST" class="0">
 <segment>
@@ -5053,6 +5167,11 @@ Workshop of Telescopes</text>
 <pinref part="R22" gate="G$1" pin="2"/>
 <pinref part="SUPPLY27" gate="+5V" pin="+5V"/>
 <wire x1="60.96" y1="147.32" x2="60.96" y2="144.78" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="V1" gate="/+UB" pin="+UB"/>
+<wire x1="203.2" y1="76.2" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="SUPPLY28" gate="+5V" pin="+5V"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -5183,13 +5302,9 @@ Workshop of Telescopes</text>
 <pinref part="U1" gate="G$1" pin="PD2(INT0)"/>
 </segment>
 <segment>
-<pinref part="T1" gate="G$1" pin="C"/>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="271.78" y1="114.3" x2="271.78" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="111.76" x2="271.78" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="111.76" x2="266.7" y2="111.76" width="0.1524" layer="91"/>
-<junction x="271.78" y="111.76"/>
-<label x="266.7" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="V1" gate="/1" pin="Y"/>
+<wire x1="180.34" y1="66.04" x2="185.42" y2="66.04" width="0.1524" layer="91"/>
+<label x="185.42" y="66.04" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="B_TRIG" class="0">
@@ -5485,7 +5600,36 @@ Workshop of Telescopes</text>
 <segment>
 <pinref part="U1" gate="G$1" pin="PD5(T1)"/>
 <wire x1="111.76" y1="33.02" x2="114.3" y2="33.02" width="0.1524" layer="91"/>
-<label x="114.3" y="33.02" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="R27" gate="G$1" pin="2"/>
+<pinref part="BUT1" gate="G$2" pin="A"/>
+<wire x1="81.28" y1="142.24" x2="88.9" y2="142.24" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="LTRIG" class="0">
+<segment>
+<pinref part="V1" gate="/1" pin="A"/>
+<wire x1="160.02" y1="68.58" x2="157.48" y2="68.58" width="0.1524" layer="91"/>
+<label x="157.48" y="68.58" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="T1" gate="G$1" pin="C"/>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="271.78" y1="114.3" x2="271.78" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="111.76" x2="271.78" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="271.78" y1="111.76" x2="266.7" y2="111.76" width="0.1524" layer="91"/>
+<junction x="271.78" y="111.76"/>
+<label x="266.7" y="111.76" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="LBUTTON" class="0">
+<segment>
+<pinref part="V1" gate="/1" pin="B"/>
+<wire x1="160.02" y1="63.5" x2="157.48" y2="63.5" width="0.1524" layer="91"/>
+<label x="157.48" y="63.5" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R22" gate="G$1" pin="1"/>
@@ -5504,13 +5648,6 @@ Workshop of Telescopes</text>
 <wire x1="68.58" y1="142.24" x2="71.12" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="BUT1" gate="G$1" pin="1"/>
 <pinref part="BUT1" gate="G$1" pin="3"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="R27" gate="G$1" pin="2"/>
-<pinref part="BUT1" gate="G$2" pin="A"/>
-<wire x1="81.28" y1="142.24" x2="88.9" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
