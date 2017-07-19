@@ -4,7 +4,7 @@ volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running = false;
-int pins[] = {13, 12};
+
 byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to a sensible
 
 
@@ -26,8 +26,8 @@ volatile byte CurrentPtr = 0; //how far through the current Bars we are
 byte CurrentDivFactor = DivFactors[DivSwitch][CurrentPtr];
 byte CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
 
-
-const byte interruptPin = 2;
+const byte GateOut=8;
+const byte GateInInterrupt = 2;
 const byte switchinterruptPin = 3;
 
 const int SW11 = 4; //These define the two switches for selecting patterns
@@ -47,6 +47,8 @@ void setup() {
   pinMode(13, OUTPUT);
   pinMode(12, OUTPUT);
 
+  pinMode(GateOut,OUTPUT);
+
   pinMode(SW11, INPUT);
   pinMode(SW12, INPUT);
   pinMode(SW21, INPUT);
@@ -56,7 +58,7 @@ void setup() {
   
   pinMode(LED_BUILTIN, OUTPUT);
   
-  attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, RISING);
+  attachInterrupt(digitalPinToInterrupt(GateInInterrupt), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
   Serial.begin(9600);
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
@@ -89,12 +91,13 @@ void Run() {
   } else {
     running = false;
   }
-  Serial.println("end int");
+  
 }
 
 
-void SetPin(int pin, boolean state) {
-  digitalWrite(pins[pin], state);
+
+void SetPin(boolean state) {
+  digitalWrite(GateOut, state);
 
 }
 
@@ -226,12 +229,12 @@ void Pulse() {
 
 
   int i = 0;
-  SetPin(0, HIGH);
+  SetPin( HIGH);
   for (i = 0; i < 1000; i++) {
     int j = i * 10; //Add some delay work
   }
 
-  SetPin(0, LOW);
+  SetPin( LOW);
 
 }
 // the loop function runs over and over again forever
