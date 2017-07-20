@@ -37,7 +37,7 @@ const int SW22 = 6;
 const int SW31= A0;
 const int SW32 = A1; 
 
-SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
+SoftwareSerial Serial7Segment(9, 7); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
 
 // the setup function runs once when you press reset or power the board
@@ -56,7 +56,7 @@ void setup() {
   pinMode(SW31, INPUT);
   pinMode(SW32, INPUT);
   
-  pinMode(LED_BUILTIN, OUTPUT);
+
   
   attachInterrupt(digitalPinToInterrupt(GateInInterrupt), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
@@ -68,7 +68,7 @@ void setup() {
   running =false;
 }
 unsigned long oldtime=0;
-const unsigned long bouncedelay =500UL; 
+const unsigned long bouncedelay =50UL; 
 void Run() {
 
   if (oldtime==0){
@@ -224,17 +224,19 @@ void HandleClock() {
   }
 }
 
-
+volatile long int work;
 void Pulse() {
 
-
-  int i = 0;
-  SetPin( HIGH);
-  for (i = 0; i < 1000; i++) {
-    int j = i * 10; //Add some delay work
+int pin= GateOut;
+   digitalWrite(pin, HIGH);  
+long int i=0;
+int k=0;
+  for (k=0;k<10;k++){
+  for (i = 0; i < 100; i++) {
+    work= i * k; //Add some delay work
   }
-
-  SetPin( LOW);
+  }
+ digitalWrite(pin, LOW);  
 
 }
 // the loop function runs over and over again forever
