@@ -37,7 +37,9 @@ const int SW22 = 6;
 const int SW31= A0;
 const int SW32 = A1; 
 
-SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
+const int txPin=9;
+const int GateOut=8;
+SoftwareSerial Serial7Segment(10, txPin); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
 
 // the setup function runs once when you press reset or power the board
@@ -221,17 +223,20 @@ void HandleClock() {
   }
 }
 
+volatile long int work;
 
 void Pulse() {
 
-
-  int i = 0;
-  SetPin(0, HIGH);
-  for (i = 0; i < 1000; i++) {
-    int j = i * 10; //Add some delay work
+int pin= GateOut;
+   digitalWrite(pin, HIGH);  
+long int i=0;
+int k=0;
+  for (k=0;k<10;k++){
+  for (i = 0; i < 100; i++) {
+    work= i * k; //Add some delay work
   }
-
-  SetPin(0, LOW);
+  }
+ digitalWrite(pin, LOW);  
 
 }
 // the loop function runs over and over again forever
