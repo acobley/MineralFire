@@ -17,6 +17,10 @@ int NumberPulses[3][4] = {{8, 8, 4, 8},
   {9, 10, 9, 14}
 };
 
+int Divider1[]={1,2,3};
+int Divider2[]={1,2,4};
+int Divider=1;
+
 byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
 byte ModeSwitch=1;
@@ -54,9 +58,7 @@ void setup() {
   pinMode(SW21, INPUT);
   pinMode(SW22, INPUT);
   pinMode(SW31, INPUT);
-  pinMode(SW32, INPUT);
   
-  pinMode(LED_BUILTIN, OUTPUT);
   
   attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
@@ -68,7 +70,7 @@ void setup() {
   running =false;
 }
 unsigned long oldtime=0;
-const unsigned long bouncedelay =500UL; 
+const unsigned long bouncedelay =50UL; 
 void Run() {
 
   if (oldtime==0){
@@ -179,9 +181,19 @@ void ReadPatternSwitches() {
   PulseSwitch = SW2 - 1;
   ModeSwitch=SW3;
 
+  if (ModeSwitch==3){
+     int Div1=Divider1[SW1];
+     int Div2=Divider2[SW2];
+     Divider=Div1*Div2;
+  }
+
   if (running == false) {
     DisplayNumbers(SW3, SW2, 110, SW1);
   }
+}
+
+void DoSimpleDivision(){
+   DisplayNumbers(CurrentPtr, CurrentPulseLength, CurrentDivFactor, DivPulseCounter);
 }
 
 void HandleClock() {
@@ -189,7 +201,9 @@ void HandleClock() {
   ReadPatternSwitches();
  
   if (running == true) {
-
+    if (ModeSwitch==3){
+      DoSimpleDivision();
+    }
     DisplayNumbers(CurrentPtr, CurrentPulseLength, CurrentDivFactor, DivPulseCounter);
     if (DivPulseCounter < CurrentDivFactor) {
 
