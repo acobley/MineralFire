@@ -5,10 +5,10 @@ Software for MineralFire Eurorack module.
 This is an Arduino based programmable clock divider.
 
 NOTES
-The Most up to date branch is "AltCounter"
+This is version 0.1. 
 
-The hardware design is in testing, do not use for production.
+The hardware design is in testing, it has passed tests so far.
 
-The Software works, but is still under development.
+The Software works.
 
 
