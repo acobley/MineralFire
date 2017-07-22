@@ -21,6 +21,9 @@ int Divider1[]={1,2,3};
 int Divider2[]={1,2,4};
 int Divider=1;
 
+int Div1=1;
+int Div2=1;
+
 byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
 byte ModeSwitch=1;
@@ -60,8 +63,8 @@ void setup() {
   pinMode(SW31, INPUT);
   
   
-  attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, RISING);
-  attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
+  attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, FALLING);
+  attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, FALLING); // Note only one interrupt can be attached to an input
   Serial.begin(9600);
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
@@ -182,8 +185,8 @@ void ReadPatternSwitches() {
   ModeSwitch=SW3;
 
   if (ModeSwitch==3){
-     int Div1=Divider1[SW1];
-     int Div2=Divider2[SW2];
+     Div1=Divider1[SW1];
+     Div2=Divider2[SW2];
      Divider=Div1*Div2;
   }
 
@@ -193,7 +196,14 @@ void ReadPatternSwitches() {
 }
 
 void DoSimpleDivision(){
-   DisplayNumbers(CurrentPtr, CurrentPulseLength, CurrentDivFactor, DivPulseCounter);
+   DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
+    
+      DivPulseCounter++;
+      if (DivPulseCounter >= Divider) {
+        Pulse();
+        DivPulseCounter = 0;
+      }
+   
 }
 
 void HandleClock() {
@@ -203,6 +213,7 @@ void HandleClock() {
   if (running == true) {
     if (ModeSwitch==3){
       DoSimpleDivision();
+      return;
     }
     DisplayNumbers(CurrentPtr, CurrentPulseLength, CurrentDivFactor, DivPulseCounter);
     if (DivPulseCounter < CurrentDivFactor) {
