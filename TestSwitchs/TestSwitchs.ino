@@ -16,7 +16,8 @@ byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
 byte ModeSwitch=1;
 const int txPin=9;
-
+const int GateOut=8;
+const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
 const int SW11 = 4; //These define the two switches for selecting patterns
 const int SW12 = 5;
@@ -32,11 +33,15 @@ byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the 
 
 void setup() {
   // put your setup code here, to run once:
+    pinMode(GateOut, OUTPUT);
     pinMode(SW11, INPUT);
   pinMode(SW12, INPUT);
   pinMode(SW21, INPUT);
   pinMode(SW22, INPUT);
   pinMode(SW31, INPUT);
+  pinMode(SW32, INPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, FALLING);
+
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, FALLING); // Note only one interrupt can be attached to an input
 
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
@@ -48,7 +53,13 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-ReadPatternSwitches() ;
+//ReadPatternSwitches() ;
+}
+
+void HandleClock() {
+  Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
+  ReadPatternSwitches();
+  Pulse();
 }
 
 unsigned long oldtime=0;
@@ -155,5 +166,22 @@ void ReadPatternSwitches() {
 
 
     DisplayNumbers(SW3, SW2, 110, SW1);
+}
+
+volatile long int work;
+
+void Pulse() {
+
+int pin= GateOut;
+   digitalWrite(pin, HIGH);  
+long int i=0;
+int k=0;
+  for (k=0;k<10;k++){
+  for (i = 0; i < 100; i++) {
+    work= i * k; //Add some delay work
+  }
+  }
+ digitalWrite(pin, LOW);  
+
 }
 

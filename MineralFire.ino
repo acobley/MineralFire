@@ -4,7 +4,7 @@ volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running = false;
-int pins[] = {13, 12};
+
 byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to a sensible
 
 
@@ -53,19 +53,19 @@ char tempString[10]; //Used for sprintf
 void setup() {
   // initialize digital pin 13 as an output.
 
-  pinMode(13, OUTPUT);
-  pinMode(12, OUTPUT);
 
+  pinMode(GateOut, OUTPUT);
   pinMode(SW11, INPUT);
   pinMode(SW12, INPUT);
   pinMode(SW21, INPUT);
   pinMode(SW22, INPUT);
   pinMode(SW31, INPUT);
+  pinMode(SW32, INPUT);
   
   
   attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, FALLING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, FALLING); // Note only one interrupt can be attached to an input
-  Serial.begin(9600);
+
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
   Serial7Segment.print("H_H_"); //Send serial string out the soft serial port to the S7S
@@ -96,14 +96,9 @@ void Run() {
   } else {
     running = false;
   }
-  Serial.println("end int");
-}
-
-
-void SetPin(int pin, boolean state) {
-  digitalWrite(pins[pin], state);
 
 }
+
 
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
@@ -180,6 +175,7 @@ void ReadPatternSwitches() {
   byte SW2 = 2 * cSW21 + cSW22;
   SW2 = SwitchConvert[SW2 - 1];
   byte SW3 =  2 * cSW31 + cSW32;
+  SW3 = SwitchConvert[SW3 - 1];
   DivSwitch = SW1 - 1;
   PulseSwitch = SW2 - 1;
   ModeSwitch=SW3;
