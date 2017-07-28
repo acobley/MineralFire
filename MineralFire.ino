@@ -8,14 +8,16 @@ volatile boolean running = false;
 byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to a sensible
 
 
-int DivFactors[3][4] = {{4, 4, 2, 1},
-  {4, 2, 4, 2},
-  {3, 5, 3, 7}
+int DivFactors[3][8] = {{4, 4, 2, 1,4, 4, 2, 1},
+  {1, 2, 4, 2,4, 2, 4, 2},
+  {3, 5, 3, 7,3, 5, 3, 7}
 };
-int NumberPulses[3][4] = {{8, 8, 4, 8},
-  {32, 16, 8, 16},
-  {9, 10, 9, 14}
+int NumberPulses[3][8] = {{8, 8, 4, 8,8, 8, 4, 8},
+  {2, 2, 4, 16,32, 16, 8, 16},
+  {9, 10, 9, 14,9, 10, 9, 14}
 };
+
+int DataLength=8;
 
 int Divider1[]={1,2,3};
 int Divider2[]={1,2,4};
@@ -230,7 +232,7 @@ void HandleClock() {
       if (NumPulseCounter >= endCon) {
         NumPulseCounter = 0;
         CurrentPtr++;
-        if (CurrentPtr < 4) {
+        if (CurrentPtr < DataLength) {
           CurrentDivFactor = DivFactors[DivSwitch][CurrentPtr];
           CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
         } else {
