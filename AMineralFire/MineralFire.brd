@@ -526,6 +526,23 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
+<package name="0603">
+<description>&lt;p&gt;&lt;b&gt;Generic 1608 (0603) package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
+<wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.0508" layer="39"/>
+<wire x1="1.6" y1="0.7" x2="1.6" y2="-0.7" width="0.0508" layer="39"/>
+<wire x1="1.6" y1="-0.7" x2="-1.6" y2="-0.7" width="0.0508" layer="39"/>
+<wire x1="-1.6" y1="-0.7" x2="-1.6" y2="0.7" width="0.0508" layer="39"/>
+<wire x1="-0.356" y1="0.432" x2="0.356" y2="0.432" width="0.1016" layer="51"/>
+<wire x1="-0.356" y1="-0.419" x2="0.356" y2="-0.419" width="0.1016" layer="51"/>
+<smd name="1" x="-0.85" y="0" dx="1.1" dy="1" layer="1"/>
+<smd name="2" x="0.85" y="0" dx="1.1" dy="1" layer="1"/>
+<text x="0" y="0.762" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-0.762" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<rectangle x1="-0.8382" y1="-0.4699" x2="-0.3381" y2="0.4801" layer="51"/>
+<rectangle x1="0.3302" y1="-0.4699" x2="0.8303" y2="0.4801" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+</package>
 <package name="AXIAL-0.3EZ">
 <description>This is the "EZ" version of the standard .3" spaced resistor package.&lt;br&gt;
 It has a reduced top mask to make it harder to install upside-down.</description>
@@ -2225,12 +2242,12 @@ design rules under a new name.</description>
 <element name="Q7" library="transistor-pnp" package="TO92" value="2N3906" x="3.81" y="45.72"/>
 <element name="Q8" library="transistor-pnp" package="TO92" value="2N3906" x="3.81" y="38.1"/>
 <element name="Q9" library="transistor-pnp" package="TO92" value="2N3906" x="3.81" y="31.75"/>
-<element name="R22" library="SparkFun-Resistors" package="AXIAL-0.3EZ" value="100" x="6.35" y="25.4">
-<attribute name="PROD_ID" value="RES-12181" x="6.35" y="25.4" size="1.778" layer="27" display="off"/>
+<element name="R22" library="SparkFun-Resistors" package="0603" value="100" x="6.35" y="25.4">
+<attribute name="PROD_ID" value="RES-12438" x="6.35" y="25.4" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" value="100" x="6.35" y="25.4" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R23" library="SparkFun-Resistors" package="AXIAL-0.3EZ" value="100" x="6.35" y="21.59">
-<attribute name="PROD_ID" value="RES-12181" x="6.35" y="21.59" size="1.778" layer="27" display="off"/>
+<element name="R23" library="SparkFun-Resistors" package="0603" value="100" x="6.35" y="21.59">
+<attribute name="PROD_ID" value="RES-12438" x="6.35" y="21.59" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" value="100" x="6.35" y="21.59" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R24" library="SparkFun-Resistors" package="AXIAL-0.3EZ" value="100" x="6.35" y="17.78">
@@ -3487,7 +3504,7 @@ design rules under a new name.</description>
 <wire x1="21.6408" y1="49.53" x2="21.59" y2="49.53" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$5">
-<contactref element="R22" pad="P$2"/>
+<contactref element="R22" pad="2"/>
 <contactref element="Q4" pad="1"/>
 <wire x1="8.8392" y1="68.0466" x2="8.8392" y2="66.0654" width="0.1524" layer="16"/>
 <wire x1="8.001" y1="68.8848" x2="8.8392" y2="68.0466" width="0.1524" layer="16"/>
@@ -3499,10 +3516,10 @@ design rules under a new name.</description>
 <wire x1="9.6012" y1="25.4508" x2="7.7724" y2="27.2796" width="0.1524" layer="16"/>
 <wire x1="10.1346" y1="25.4508" x2="9.6012" y2="25.4508" width="0.1524" layer="16"/>
 <wire x1="8.8392" y1="66.0654" x2="8.89" y2="66.04" width="0.1524" layer="16"/>
-<wire x1="10.1346" y1="25.4508" x2="10.16" y2="25.4" width="0.1524" layer="16"/>
+<wire x1="10.1346" y1="25.4508" x2="7.2" y2="25.4" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$11">
-<contactref element="R23" pad="P$2"/>
+<contactref element="R23" pad="2"/>
 <contactref element="Q3" pad="1"/>
 <wire x1="7.62" y1="72.39" x2="8.89" y2="72.39" width="0.1524" layer="16"/>
 <wire x1="6.7056" y1="73.3044" x2="7.62" y2="72.39" width="0.1524" layer="16"/>
@@ -3514,7 +3531,7 @@ design rules under a new name.</description>
 <wire x1="7.4676" y1="30.6324" x2="5.4102" y2="32.6898" width="0.1524" layer="16"/>
 <wire x1="7.4676" y1="24.3078" x2="7.4676" y2="30.6324" width="0.1524" layer="16"/>
 <wire x1="10.1346" y1="21.6408" x2="7.4676" y2="24.3078" width="0.1524" layer="16"/>
-<wire x1="10.1346" y1="21.6408" x2="10.16" y2="21.59" width="0.1524" layer="16"/>
+<wire x1="10.1346" y1="21.6408" x2="7.2" y2="21.59" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$13">
 <contactref element="R24" pad="P$2"/>
@@ -3681,7 +3698,7 @@ design rules under a new name.</description>
 </signal>
 <signal name="AN-D">
 <contactref element="DS1" pad="3"/>
-<contactref element="R23" pad="P$1"/>
+<contactref element="R23" pad="1"/>
 <wire x1="32.9184" y1="40.6146" x2="36.8046" y2="40.6146" width="0.1524" layer="1"/>
 <wire x1="25.146" y1="32.8422" x2="32.9184" y2="40.6146" width="0.1524" layer="1"/>
 <wire x1="21.1836" y1="32.8422" x2="25.146" y2="32.8422" width="0.1524" layer="16"/>
@@ -3695,18 +3712,18 @@ design rules under a new name.</description>
 <wire x1="7.5438" y1="16.6116" x2="10.668" y2="16.6116" width="0.1524" layer="16"/>
 <wire x1="2.5908" y1="21.5646" x2="7.5438" y2="16.6116" width="0.1524" layer="16"/>
 <wire x1="36.8046" y1="40.6146" x2="36.83" y2="40.64" width="0.1524" layer="1"/>
-<wire x1="2.5908" y1="21.5646" x2="2.54" y2="21.59" width="0.1524" layer="16"/>
+<wire x1="2.5908" y1="21.5646" x2="5.5" y2="21.59" width="0.1524" layer="16"/>
 <via x="25.146" y="32.8422" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="AN-E">
 <contactref element="DS1" pad="5"/>
-<contactref element="R22" pad="P$1"/>
+<contactref element="R22" pad="1"/>
 <wire x1="30.48" y1="35.5854" x2="36.8046" y2="35.5854" width="0.1524" layer="1"/>
 <wire x1="23.0124" y1="28.1178" x2="30.48" y2="35.5854" width="0.1524" layer="1"/>
 <wire x1="16.5354" y1="28.1178" x2="23.0124" y2="28.1178" width="0.1524" layer="1"/>
 <wire x1="14.4018" y1="30.2514" x2="16.5354" y2="28.1178" width="0.1524" layer="1"/>
 <wire x1="7.3914" y1="30.2514" x2="14.4018" y2="30.2514" width="0.1524" layer="1"/>
-<wire x1="2.54" y1="25.4" x2="7.3914" y2="30.2514" width="0.1524" layer="1"/>
+<wire x1="5.5" y1="25.4" x2="7.3914" y2="30.2514" width="0.1524" layer="1"/>
 <wire x1="36.8046" y1="35.5854" x2="36.83" y2="35.56" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$21">
