@@ -2339,26 +2339,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 &lt;br&gt;
 You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
 <packages>
-<package name="AXIAL-0.3EZ">
-<description>This is the "EZ" version of the standard .3" spaced resistor package.&lt;br&gt;
-It has a reduced top mask to make it harder to install upside-down.</description>
-<wire x1="-2.54" y1="0.762" x2="2.54" y2="0.762" width="0.2032" layer="21"/>
-<wire x1="2.54" y1="0.762" x2="2.54" y2="0" width="0.2032" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-0.762" width="0.2032" layer="21"/>
-<wire x1="2.54" y1="-0.762" x2="-2.54" y2="-0.762" width="0.2032" layer="21"/>
-<wire x1="-2.54" y1="-0.762" x2="-2.54" y2="0" width="0.2032" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.54" y2="0.762" width="0.2032" layer="21"/>
-<wire x1="2.54" y1="0" x2="2.794" y2="0" width="0.2032" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-2.794" y2="0" width="0.2032" layer="21"/>
-<pad name="P$1" x="-3.81" y="0" drill="0.9" diameter="1.8796" stop="no"/>
-<pad name="P$2" x="3.81" y="0" drill="0.9" diameter="1.8796" stop="no"/>
-<text x="0" y="1.016" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;Name</text>
-<text x="0" y="-1.016" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;Value</text>
-<circle x="-3.81" y="0" radius="0.508" width="0" layer="29"/>
-<circle x="3.81" y="0" radius="0.523634375" width="0" layer="29"/>
-<circle x="-3.81" y="0" radius="1.02390625" width="0" layer="30"/>
-<circle x="3.81" y="0" radius="1.04726875" width="0" layer="30"/>
-</package>
 <package name="AXIAL-0.3">
 <description>&lt;h3&gt;AXIAL-0.3&lt;/h3&gt;
 &lt;p&gt;Commonly used for 1/4W through-hole resistors. 0.3" pitch between holes.&lt;/p&gt;</description>
@@ -3039,87 +3019,6 @@ It has a reduced top mask to make it harder to install upside-down.</description
 </device>
 </devices>
 </deviceset>
-<deviceset name="100OHM" prefix="R">
-<description>&lt;h3&gt;100Ω resistor&lt;/h3&gt;
-&lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
-<gates>
-<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="-HORIZ-1/4W-1%" package="AXIAL-0.3">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
-<connect gate="G$1" pin="2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-12181" constant="no"/>
-<attribute name="VALUE" value="100" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="-HORIZ_KIT-1/4W-1%" package="AXIAL-0.3EZ">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
-<connect gate="G$1" pin="2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-12181" constant="no"/>
-<attribute name="VALUE" value="100" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="-VERT-1/4W-1%" package="AXIAL-0.1">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
-<connect gate="G$1" pin="2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-12181"/>
-<attribute name="VALUE" value="100"/>
-</technology>
-</technologies>
-</device>
-<device name="-VERT_KIT-1/4W-1%" package="AXIAL-0.1-KIT">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
-<connect gate="G$1" pin="2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-12181" constant="no"/>
-<attribute name="VALUE" value="100" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="-0603-1/4W-5%" package="0603">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-12438"/>
-<attribute name="VALUE" value="100"/>
-</technology>
-</technologies>
-</device>
-<device name="-0603-1/10W-1%" package="0603">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-07863"/>
-<attribute name="VALUE" value="100"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="330OHM" prefix="R">
 <description>&lt;h3&gt;330Ω resistor&lt;/h3&gt;
 &lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
@@ -3149,6 +3048,24 @@ It has a reduced top mask to make it harder to install upside-down.</description
 <attribute name="PROD_ID" value="RES-8371" constant="no"/>
 <attribute name="VALUE" value="330" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="68OHM" prefix="R">
+<description>&lt;h3&gt;68Ω resistor&lt;/h3&gt;
+&lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-0603-1/10W-1%" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -4243,6 +4160,43 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <vertex x="-5.715" y="-3.96875" curve="-90"/>
 </polygon>
 </package>
+<package name="SO08">
+<description>SOIC, 0.15 inch width</description>
+<wire x1="2.3368" y1="1.9463" x2="-2.3368" y2="1.9463" width="0.2032" layer="21"/>
+<wire x1="2.4368" y1="-1.9463" x2="2.7178" y2="-1.5653" width="0.2032" layer="21" curve="90"/>
+<wire x1="-2.7178" y1="1.4653" x2="-2.3368" y2="1.9463" width="0.2032" layer="21" curve="-90.023829"/>
+<wire x1="2.3368" y1="1.9463" x2="2.7178" y2="1.5653" width="0.2032" layer="21" curve="-90.030084"/>
+<wire x1="-2.7178" y1="-1.6653" x2="-2.3368" y2="-1.9463" width="0.2032" layer="21" curve="90.060185"/>
+<wire x1="-2.3368" y1="-1.9463" x2="2.4368" y2="-1.9463" width="0.2032" layer="21"/>
+<wire x1="2.7178" y1="-1.5653" x2="2.7178" y2="1.5653" width="0.2032" layer="21"/>
+<wire x1="-2.667" y1="0.6096" x2="-2.667" y2="-0.6604" width="0.2032" layer="21" curve="-180"/>
+<wire x1="-2.7178" y1="1.4526" x2="-2.7178" y2="0.6096" width="0.2032" layer="21"/>
+<wire x1="-2.7178" y1="-1.6653" x2="-2.7178" y2="-0.6604" width="0.2032" layer="21"/>
+<rectangle x1="-2.159" y1="-3.302" x2="-1.651" y2="-2.2733" layer="51"/>
+<rectangle x1="-0.889" y1="-3.302" x2="-0.381" y2="-2.2733" layer="51"/>
+<rectangle x1="0.381" y1="-3.302" x2="0.889" y2="-2.2733" layer="51"/>
+<rectangle x1="1.651" y1="-3.302" x2="2.159" y2="-2.2733" layer="51"/>
+<rectangle x1="-0.889" y1="2.286" x2="-0.381" y2="3.302" layer="51"/>
+<rectangle x1="0.381" y1="2.286" x2="0.889" y2="3.302" layer="51"/>
+<rectangle x1="1.651" y1="2.286" x2="2.159" y2="3.302" layer="51"/>
+<smd name="1" x="-1.905" y="-2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="2" x="-0.635" y="-2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="3" x="0.635" y="-2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="4" x="1.905" y="-2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="5" x="1.905" y="2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="6" x="0.635" y="2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="7" x="-0.635" y="2.8" dx="0.6" dy="1.2" layer="1"/>
+<smd name="8" x="-1.905" y="2.8" dx="0.6" dy="1.2" layer="1"/>
+<text x="-3.175" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="3.81" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;VALUE</text>
+<rectangle x1="-2.159" y1="2.286" x2="-1.651" y2="3.302" layer="51"/>
+<polygon width="0.002540625" layer="21">
+<vertex x="-2.69875" y="-2.38125" curve="90"/>
+<vertex x="-3.01625" y="-2.06375" curve="90"/>
+<vertex x="-3.33375" y="-2.38125" curve="90"/>
+<vertex x="-3.01625" y="-2.69875" curve="90"/>
+</polygon>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -4319,6 +4273,64 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <technology name="">
 <attribute name="PROD_ID" value="IC-09172" constant="no"/>
 <attribute name="VALUE" value="LM358" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="OPAMP-DUAL" prefix="IC">
+<description>&lt;h3&gt;Generic op-amp footprint&lt;/h3&gt;
+&lt;p&gt;This component is for the standard 358 pinning of a dual op-amp&lt;/p&gt;
+&lt;p&gt;From the LM358 datasheet:&lt;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pin 1: Output A&lt;/li&gt;
+&lt;li&gt;Pin 2: Inverting Input A&lt;/li&gt;
+&lt;li&gt;Pin 3: Non-Inverting Input A&lt;/li&gt;
+&lt;li&gt;Pin 4: Gnd&lt;/li&gt;
+&lt;li&gt;Pin 5: Non-Inverting Input B&lt;/li&gt;
+&lt;li&gt;Pin 6: Inverting Input B&lt;/li&gt;
+&lt;li&gt;Pin 7: Output B&lt;/li&gt;
+&lt;li&gt;Pin 8: V+&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="G1" symbol="OP-AMP" x="-10.16" y="0"/>
+<gate name="G2" symbol="OP-AMP" x="10.16" y="0"/>
+<gate name="G3" symbol="POWER_CONSORT" x="25.4" y="0"/>
+</gates>
+<devices>
+<device name="U" package="SO08">
+<connects>
+<connect gate="G1" pin="+IN" pad="3"/>
+<connect gate="G1" pin="-IN" pad="2"/>
+<connect gate="G1" pin="OUT" pad="1"/>
+<connect gate="G2" pin="+IN" pad="5"/>
+<connect gate="G2" pin="-IN" pad="6"/>
+<connect gate="G2" pin="OUT" pad="7"/>
+<connect gate="G3" pin="P$V+" pad="8"/>
+<connect gate="G3" pin="P$V-" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="NA-XXXXX" constant="no"/>
+<attribute name="VALUE" value="OP-AMP" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="" package="DIP08">
+<connects>
+<connect gate="G1" pin="+IN" pad="3"/>
+<connect gate="G1" pin="-IN" pad="2"/>
+<connect gate="G1" pin="OUT" pad="1"/>
+<connect gate="G2" pin="+IN" pad="5"/>
+<connect gate="G2" pin="-IN" pad="6"/>
+<connect gate="G2" pin="OUT" pad="7"/>
+<connect gate="G3" pin="P$V+" pad="8"/>
+<connect gate="G3" pin="P$V-" pad="4"/>
+</connects>
+<technologies>
+<technology name="DIP">
+<attribute name="PROD_ID" value="NA-XXXXX" constant="no"/>
+<attribute name="VALUE" value="OP-AMP" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -8008,17 +8020,17 @@ Source: &lt;a href="http://www.mouser.com/ds/2/427/tdc10m-88849.pdf"&gt; Datashe
 </class>
 </classes>
 <parts>
-<part name="Q1" library="adafruit" deviceset="CRYSTAL" device="HC49U70" value="20MHz"/>
-<part name="C1" library="SparkFun-Capacitors" deviceset="22PF" device="-PTH-2.54MM-200V-5%" value="22pF"/>
-<part name="C2" library="SparkFun-Capacitors" deviceset="22PF" device="-PTH-2.54MM-200V-5%" value="22pF"/>
+<part name="Q1" library="adafruit" deviceset="CRYSTAL" device="HC49UP" value="20MHz"/>
+<part name="C1" library="SparkFun-Capacitors" deviceset="22PF" device="-0603-50V-5%" value="22pF"/>
+<part name="C2" library="SparkFun-Capacitors" deviceset="22PF" device="-0603-50V-5%" value="22pF"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="ISP1" library="adafruit" deviceset="AVRISP" device="-6"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="supply2" deviceset="+5V" device=""/>
 <part name="D1" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="-1N4148" value="200mA/100V/1V"/>
 <part name="D2" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="-1N4148" value="200mA/100V/1V"/>
-<part name="C4" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-RADIAL-2.5MM-25V-20%" value="10uF"/>
-<part name="C5" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-RADIAL-2.5MM-25V-20%" value="10uF"/>
+<part name="C4" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-EIA6032-25V-10%" value="10µF"/>
+<part name="C5" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-EIA6032-25V-10%" value="10µF"/>
 <part name="SUPPLY4" library="supply2" deviceset="+12V" device=""/>
 <part name="SUPPLY5" library="supply2" deviceset="-12V" device=""/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
@@ -8027,21 +8039,21 @@ Source: &lt;a href="http://www.mouser.com/ds/2/427/tdc10m-88849.pdf"&gt; Datashe
 <part name="R9" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-1%" value="10k"/>
 <part name="SUPPLY8" library="supply2" deviceset="+5V" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
-<part name="R10" library="SparkFun-Resistors" deviceset="1KOHM" device="-HORIZ-1/4W-5%" value="1k"/>
-<part name="R11" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R12" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="U3" library="SparkFun-IC-Power" deviceset="V_REG_78XX" device="-TO-220" value="7805"/>
-<part name="C7" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-RADIAL-2.5MM-25V-20%" value="10uF"/>
+<part name="R10" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="1k"/>
+<part name="R11" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R12" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="U3" library="SparkFun-IC-Power" deviceset="V_REG_78XX" device="7812" value="+12v"/>
+<part name="C7" library="SparkFun-Capacitors" deviceset="10UF-POLAR" device="-EIA6032-25V-10%" value="10µF"/>
 <part name="SUPPLY10" library="supply2" deviceset="+5V" device=""/>
-<part name="C8" library="SparkFun-Capacitors" deviceset="0.1UF" device="-KIT-EZ-50V-20%" value="0.1uF"/>
-<part name="C9" library="SparkFun-Capacitors" deviceset="0.1UF" device="-KIT-EZ-50V-20%" value="0.1uF"/>
-<part name="C10" library="SparkFun-Capacitors" deviceset="0.1UF" device="-KIT-EZ-50V-20%" value="0.1uF"/>
-<part name="C11" library="SparkFun-Capacitors" deviceset="0.1UF" device="-KIT-EZ-50V-20%" value="0.1uF"/>
+<part name="C8" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
+<part name="C9" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
+<part name="C10" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
+<part name="C11" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
 <part name="SUPPLY11" library="supply2" deviceset="+12V" device=""/>
 <part name="SUPPLY12" library="supply2" deviceset="-12V" device=""/>
 <part name="SUPPLY13" library="supply2" deviceset="+5V" device=""/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
-<part name="C12" library="SparkFun-Capacitors" deviceset="0.1UF" device="-KIT-EZ-50V-20%" value="0.1uF"/>
+<part name="C12" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
 <part name="U1" library="SparkFun-IC-Microcontroller" deviceset="ATMEGA328P_PDIP" device="" value="328P"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="supply2" deviceset="GND" device=""/>
@@ -8049,46 +8061,46 @@ Source: &lt;a href="http://www.mouser.com/ds/2/427/tdc10m-88849.pdf"&gt; Datashe
 <part name="SUPPLY9" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY3" library="supply2" deviceset="+5V" device=""/>
 <part name="MODESW1" library="INSTRUO" deviceset="TOGGLE_ON_OFF_ON" device="" value=""/>
-<part name="R1" library="SparkFun-Resistors" deviceset="1KOHM" device="-HORIZ-1/4W-5%" value="1k"/>
-<part name="R2" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R3" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
+<part name="R1" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="1k"/>
+<part name="R2" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R3" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
 <part name="SUPPLY6" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY15" library="supply2" deviceset="+5V" device=""/>
 <part name="MODESW3" library="INSTRUO" deviceset="TOGGLE_ON_OFF_ON" device="" value=""/>
-<part name="R4" library="SparkFun-Resistors" deviceset="1KOHM" device="-HORIZ-1/4W-5%" value="1k"/>
+<part name="R4" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="1k"/>
 <part name="R5" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R6" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
+<part name="R6" library="SparkFun-Resistors" deviceset="100KOHM" device="-0402-1/16W-1%" value="100K"/>
 <part name="SUPPLY16" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY17" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY18" library="supply2" deviceset="+5V" device=""/>
 <part name="T1" library="SparkFun-DiscreteSemi" deviceset="TRANS_NPN" device="-2N3904" value="200mA/40V"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="R7" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-5%" value="10k"/>
+<part name="R7" library="SparkFun-Resistors" deviceset="10KOHM" device="-0603-1/10W-1%" value="10k"/>
 <part name="SUPPLY19" library="supply2" deviceset="+5V" device=""/>
-<part name="R8" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R13" library="SparkFun-Resistors" deviceset="1MOHM" device="-HORIZ-1/4W-5%" value="1M"/>
+<part name="R8" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R13" library="SparkFun-Resistors" deviceset="1MOHM" device="-0603-1/4W-5%" value="1M"/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="TRIGATEIN" library="INSTRUO" deviceset="S_JACK" device="" value=""/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="R15" library="SparkFun-Resistors" deviceset="330OHM" device="-HORIZ-1/10W-5%" value="330"/>
+<part name="R15" library="SparkFun-Resistors" deviceset="330OHM" device="-0603-1/10W-1%" value="330"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="R16" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R17" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R18" library="SparkFun-Resistors" deviceset="1KOHM" device="-HORIZ-1/4W-5%" value="1k"/>
+<part name="R16" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R17" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R18" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="1k"/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="TRIGOUT" library="INSTRUO" deviceset="S_JACK" device="" value=""/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
-<part name="R19" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
+<part name="R19" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
-<part name="D3" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="-1N4148" value="200mA/100V/1V"/>
+<part name="D3" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="-BAS16J" value="250mA/100V"/>
 <part name="IC1" library="SparkFun-IC-Amplifiers" deviceset="LM358" device="" value="LM358"/>
 <part name="SUPPLY22" library="supply2" deviceset="+12V" device=""/>
 <part name="SUPPLY23" library="supply2" deviceset="GND" device=""/>
 <part name="PROGSW" library="INSTRUO" deviceset="TOGGLE_ON_OFF_ON" device="" value=""/>
-<part name="R14" library="SparkFun-Resistors" deviceset="1KOHM" device="-HORIZ-1/4W-5%" value="1k"/>
-<part name="R20" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
-<part name="R21" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="100k"/>
+<part name="R14" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="1k"/>
+<part name="R20" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
+<part name="R21" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
 <part name="SUPPLY24" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY25" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY26" library="supply2" deviceset="+5V" device=""/>
@@ -8096,14 +8108,14 @@ Source: &lt;a href="http://www.mouser.com/ds/2/427/tdc10m-88849.pdf"&gt; Datashe
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="BUT" library="INSTRUO" deviceset="PB6149L-5" device="" value="PB6149L-5"/>
 <part name="BUT1" library="INSTRUO" deviceset="PB6149L-5" device="" value="PB6149L-5"/>
-<part name="R27" library="SparkFun-Resistors" deviceset="100KOHM" device="-HORIZ-1/4W-5%" value="150"/>
+<part name="R27" library="SparkFun-Resistors" deviceset="100KOHM" device="-0603-1/10W-1%" value="100k"/>
 <part name="V1" library="74ttl-din" deviceset="74*32" device="N"/>
 <part name="SUPPLY28" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY29" library="supply2" deviceset="GND" device=""/>
 <part name="C6" library="rcl" deviceset="C-EU" device="075-032X103" value="100pf"/>
-<part name="Q2" library="adafruit" deviceset="CRYSTAL" device="HC49U70" value="20MHz"/>
-<part name="C3" library="SparkFun-Capacitors" deviceset="22PF" device="-PTH-2.54MM-200V-5%" value="22pF"/>
-<part name="C13" library="SparkFun-Capacitors" deviceset="22PF" device="-PTH-2.54MM-200V-5%" value="22pF"/>
+<part name="Q2" library="adafruit" deviceset="CRYSTAL" device="HC49UP" value="20MHz"/>
+<part name="C3" library="SparkFun-Capacitors" deviceset="22PF" device="-0603-50V-5%" value="22pF"/>
+<part name="C13" library="SparkFun-Capacitors" deviceset="22PF" device="-0603-50V-5%" value="22pF"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="U2" library="SparkFun-IC-Microcontroller" deviceset="ATMEGA328P_PDIP" device="" value="328P"/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
@@ -8134,13 +8146,14 @@ Source: &lt;a href="http://www.mouser.com/ds/2/427/tdc10m-88849.pdf"&gt; Datashe
 <part name="SUPPLY38" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY39" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY40" library="supply2" deviceset="+5V" device=""/>
-<part name="R22" library="SparkFun-Resistors" deviceset="100OHM" device="-0603-1/4W-5%" value="100"/>
-<part name="R23" library="SparkFun-Resistors" deviceset="100OHM" device="-0603-1/4W-5%" value="100"/>
-<part name="R24" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
-<part name="R25" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
-<part name="R26" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
-<part name="R28" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
-<part name="R29" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
+<part name="R22" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R23" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R24" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R25" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R26" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R28" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="R29" library="SparkFun-Resistors" deviceset="68OHM" device="-0603-1/10W-1%"/>
+<part name="IC2" library="SparkFun-IC-Amplifiers" deviceset="OPAMP-DUAL" device="U" value="OP-AMP"/>
 </parts>
 <sheets>
 <sheet>
@@ -8224,7 +8237,6 @@ Workshop of Telescopes</text>
 <instance part="R19" gate="G$1" x="248.92" y="10.16" rot="R90"/>
 <instance part="GND22" gate="1" x="248.92" y="0"/>
 <instance part="D3" gate="G$1" x="304.8" y="48.26"/>
-<instance part="IC1" gate="G1" x="269.24" y="35.56"/>
 <instance part="IC1" gate="G3" x="294.64" y="10.16"/>
 <instance part="SUPPLY22" gate="+12V" x="294.64" y="22.86"/>
 <instance part="SUPPLY23" gate="GND" x="294.64" y="0"/>
@@ -8288,6 +8300,7 @@ Workshop of Telescopes</text>
 <instance part="R26" gate="G$1" x="408.94" y="170.18" rot="R90"/>
 <instance part="R28" gate="G$1" x="426.72" y="195.58" rot="R90"/>
 <instance part="R29" gate="G$1" x="444.5" y="241.3" rot="R90"/>
+<instance part="IC2" gate="G1" x="269.24" y="35.56"/>
 </instances>
 <busses>
 </busses>
@@ -9027,10 +9040,10 @@ Workshop of Telescopes</text>
 <label x="246.38" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="R19" gate="G$1" pin="2"/>
 <wire x1="248.92" y1="17.78" x2="248.92" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G1" pin="+IN"/>
 <wire x1="261.62" y1="33.02" x2="254" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="254" y1="33.02" x2="254" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="BUT" gate="G$2" pin="A"/>
+<pinref part="IC2" gate="G1" pin="+IN"/>
 </segment>
 </net>
 <net name="N$31" class="0">
@@ -9052,10 +9065,10 @@ Workshop of Telescopes</text>
 <junction x="248.92" y="58.42"/>
 <wire x1="269.24" y1="48.26" x2="248.92" y2="48.26" width="0.1524" layer="91"/>
 <junction x="248.92" y="48.26"/>
-<pinref part="IC1" gate="G1" pin="-IN"/>
 <wire x1="261.62" y1="38.1" x2="254" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="254" y1="38.1" x2="254" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="IC2" gate="G1" pin="-IN"/>
 </segment>
 </net>
 <net name="N$33" class="0">
@@ -9066,8 +9079,8 @@ Workshop of Telescopes</text>
 <pinref part="R18" gate="G$1" pin="1"/>
 <wire x1="284.48" y1="35.56" x2="281.94" y2="35.56" width="0.1524" layer="91"/>
 <junction x="281.94" y="35.56"/>
-<pinref part="IC1" gate="G1" pin="OUT"/>
 <pinref part="C6" gate="G$1" pin="2"/>
+<pinref part="IC2" gate="G1" pin="OUT"/>
 </segment>
 </net>
 <net name="N$34" class="0">
