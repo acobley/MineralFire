@@ -8539,16 +8539,6 @@ Workshop of Telescopes</text>
 <wire x1="63.5" y1="68.58" x2="55.88" y2="68.58" width="0.1524" layer="91"/>
 <label x="55.88" y="68.58" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="U2" gate="G$1" pin="PC6(/RESET)"/>
-<wire x1="58.42" y1="233.68" x2="50.8" y2="233.68" width="0.1524" layer="91"/>
-<label x="50.8" y="233.68" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="ISP2" gate="G$1" pin="RST"/>
-<wire x1="-7.62" y1="170.18" x2="-10.16" y2="170.18" width="0.1524" layer="91"/>
-<label x="-10.16" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
 <net name="+5V" class="1">
 <segment>
@@ -9585,6 +9575,18 @@ Workshop of Telescopes</text>
 <pinref part="R22" gate="G$1" pin="1"/>
 <wire x1="259.08" y1="205.74" x2="259.08" y2="200.66" width="0.1524" layer="91"/>
 <label x="259.08" y="200.66" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="RST2" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="PC6(/RESET)"/>
+<wire x1="58.42" y1="233.68" x2="50.8" y2="233.68" width="0.1524" layer="91"/>
+<label x="50.8" y="233.68" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="ISP2" gate="G$1" pin="RST"/>
+<wire x1="-7.62" y1="170.18" x2="-10.16" y2="170.18" width="0.1524" layer="91"/>
+<label x="-10.16" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
