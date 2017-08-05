@@ -5,11 +5,11 @@ volatile byte NumPulseCounter = 0;
 boolean state[] = {false, false, false, false};
 volatile boolean running = false;
 
-byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to a sensible
+byte SwitchConvert[] = {1, 3, 2}; //We use this to convert from the numbers the switch puts out to the correct number
 
 
 int DivFactors[3][8] = {{4, 4, 2, 1,4, 4, 2, 1},
-  {1, 2, 4, 2,4, 2, 4, 2},
+  {2, 1, 4, 2,4, 2, 4, 1},
   {3, 5, 3, 7,3, 5, 3, 7}
 };
 int NumberPulses[3][8] = {{8, 8, 4, 8,8, 8, 4, 8},
@@ -19,7 +19,7 @@ int NumberPulses[3][8] = {{8, 8, 4, 8,8, 8, 4, 8},
 
 int DataLength=8;
 
-int Divider1[]={1,2,3};
+int Divider1[]={1,2,3}; //Adjusted for the logic of the switches
 int Divider2[]={1,2,4};
 int Divider=1;
 
@@ -51,6 +51,8 @@ const int GateOut=8;
 SoftwareSerial Serial7Segment(10, txPin); //RX pin, TX pin
 char tempString[10]; //Used for sprintf
 
+long IntMillis =0;
+
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin 13 as an output.
@@ -70,12 +72,26 @@ void setup() {
 
   Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
+  
+  int brightnessLevel=64; //turn down the brightness
+    Serial7Segment.write(0x7A);  // Brightness control command
+    Serial7Segment.write((byte) brightnessLevel);  // 0 is dimmest, 255 is brightest
   Serial7Segment.print("H_H_"); //Send serial string out the soft serial port to the S7S
- 
+   delay(500);
+   byte num=5;
+   for (num=10;num >=5;num--){
+     Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
+     DisplayNumbers(num,num-1,num-2,num-3);
+     delay(300);
+   }
+   
+  IntMillis=millis();
   running =false;
 }
 unsigned long oldtime=0;
 const unsigned long bouncedelay =50UL; 
+
+
 void Run() {
 
   if (oldtime==0){
@@ -98,7 +114,7 @@ void Run() {
   } else {
     running = false;
   }
-
+ 
 }
 
 
@@ -176,27 +192,35 @@ void ReadPatternSwitches() {
   SW1 = SwitchConvert[SW1 - 1];
   byte SW2 = 2 * cSW21 + cSW22;
   SW2 = SwitchConvert[SW2 - 1];
-  byte SW3 =  2 * cSW31 + cSW32;
+  byte SW3 =  2 * cSW32 + cSW31;
   SW3 = SwitchConvert[SW3 - 1];
   DivSwitch = SW1 - 1;
   PulseSwitch = SW2 - 1;
   ModeSwitch=SW3;
 
   if (ModeSwitch==3){
-     Div1=Divider1[SW1];
-     Div2=Divider2[SW2];
+     Div1=Divider1[SW1-1];
+     Div2=Divider2[SW2-1];
      Divider=Div1*Div2;
   }
 
   if (running == false) {
-    DisplayNumbers(SW3, SW2, 110, SW1);
+    if (ModeSwitch==3){
+       DisplayNumbers(SW3, Div1,Div2,Divider);
+       //DisplayNumbers(SW3, SW1, 110, SW2);
+    
+    }
+    else{
+      DisplayNumbers(SW3, SW1, 110, SW2);
+    }
   }
 }
 
 void DoSimpleDivision(){
-   DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
+
     
       DivPulseCounter++;
+      //DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
       if (DivPulseCounter >= Divider) {
         Pulse();
         DivPulseCounter = 0;
@@ -204,12 +228,24 @@ void DoSimpleDivision(){
    
 }
 
+void DisplayTempo(float Tempo){
+  int iTempo=(int)(Tempo);
+  sprintf(tempString, "%4d", iTempo); //Convert deciSecond into a string that is right adjusted
+  Serial7Segment.print(tempString); //Send serial string out the soft serial port to the S7S
+}
+
+
 void HandleClock() {
   Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
   ReadPatternSwitches();
  
   if (running == true) {
     if (ModeSwitch==3){
+      long NewTime=millis();
+      long tTime =NewTime - IntMillis;
+      IntMillis=NewTime;
+      float tempo = 30.0*((float)1000/(float)tTime);
+      DisplayTempo(tempo);
       DoSimpleDivision();
       return;
     }
