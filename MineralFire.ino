@@ -216,10 +216,12 @@ void ReadPatternSwitches() {
   }
 }
 
+float tempo;
 void DoSimpleDivision(){
 
     
       DivPulseCounter++;
+       DisplayTempo(tempo);
       //DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
       if (DivPulseCounter >= Divider) {
         Pulse();
@@ -244,8 +246,8 @@ void HandleClock() {
       long NewTime=millis();
       long tTime =NewTime - IntMillis;
       IntMillis=NewTime;
-      float tempo = 30.0*((float)1000/(float)tTime);
-      DisplayTempo(tempo);
+      tempo = 30.0*((float)1000/(float)tTime);
+     
       DoSimpleDivision();
       return;
     }
