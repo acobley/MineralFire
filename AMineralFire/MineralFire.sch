@@ -8172,7 +8172,7 @@ Workshop of Telescopes</text>
 <instance part="R10" gate="G$1" x="193.04" y="106.68" rot="R270"/>
 <instance part="R11" gate="G$1" x="198.12" y="134.62" rot="R270"/>
 <instance part="R12" gate="G$1" x="187.96" y="134.62" rot="R270"/>
-<instance part="U3" gate="G$1" x="205.74" y="-7.62"/>
+<instance part="U3" gate="G$1" x="205.74" y="-7.62" rot="MR180"/>
 <instance part="C7" gate="G$1" x="220.98" y="-12.7"/>
 <instance part="SUPPLY10" gate="+5V" x="220.98" y="-2.54"/>
 <instance part="C8" gate="G$1" x="20.32" y="-7.62"/>
@@ -8361,7 +8361,7 @@ Workshop of Telescopes</text>
 <junction x="147.32" y="-22.86"/>
 <pinref part="U3" gate="G$1" pin="GND"/>
 <wire x1="182.88" y1="-20.32" x2="205.74" y2="-20.32" width="0.1524" layer="91"/>
-<wire x1="205.74" y1="-20.32" x2="205.74" y2="-15.24" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="-20.32" x2="205.74" y2="0" width="0.1524" layer="91"/>
 <junction x="182.88" y="-20.32"/>
 <pinref part="C7" gate="G$1" pin="-"/>
 <wire x1="205.74" y1="-20.32" x2="220.98" y2="-20.32" width="0.1524" layer="91"/>
@@ -8556,9 +8556,9 @@ Workshop of Telescopes</text>
 <pinref part="C7" gate="G$1" pin="+"/>
 <pinref part="SUPPLY10" gate="+5V" pin="+5V"/>
 <wire x1="220.98" y1="-5.08" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
-<pinref part="U3" gate="G$1" pin="IN"/>
+<pinref part="U3" gate="G$1" pin="OUT"/>
 <wire x1="220.98" y1="-7.62" x2="220.98" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="-7.62" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="-7.62" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
 <junction x="220.98" y="-7.62"/>
 </segment>
 <segment>
@@ -8790,8 +8790,8 @@ Workshop of Telescopes</text>
 <wire x1="182.88" y1="-7.62" x2="182.88" y2="-5.08" width="0.1524" layer="91"/>
 <junction x="172.72" y="-7.62"/>
 <pinref part="SUPPLY4" gate="+12V" pin="+12V"/>
-<pinref part="U3" gate="G$1" pin="OUT"/>
-<wire x1="182.88" y1="-7.62" x2="213.36" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="IN"/>
+<wire x1="182.88" y1="-7.62" x2="198.12" y2="-7.62" width="0.1524" layer="91"/>
 <junction x="182.88" y="-7.62"/>
 </segment>
 <segment>
