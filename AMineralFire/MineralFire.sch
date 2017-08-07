@@ -8172,7 +8172,7 @@ Workshop of Telescopes</text>
 <instance part="R10" gate="G$1" x="193.04" y="106.68" rot="R270"/>
 <instance part="R11" gate="G$1" x="198.12" y="134.62" rot="R270"/>
 <instance part="R12" gate="G$1" x="187.96" y="134.62" rot="R270"/>
-<instance part="U3" gate="G$1" x="205.74" y="-7.62" rot="MR0"/>
+<instance part="U3" gate="G$1" x="205.74" y="-7.62"/>
 <instance part="C7" gate="G$1" x="220.98" y="-12.7"/>
 <instance part="SUPPLY10" gate="+5V" x="220.98" y="-2.54"/>
 <instance part="C8" gate="G$1" x="20.32" y="-7.62"/>
@@ -8558,7 +8558,7 @@ Workshop of Telescopes</text>
 <wire x1="220.98" y1="-5.08" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="IN"/>
 <wire x1="220.98" y1="-7.62" x2="220.98" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="-7.62" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="-7.62" x2="220.98" y2="-7.62" width="0.1524" layer="91"/>
 <junction x="220.98" y="-7.62"/>
 </segment>
 <segment>
@@ -8791,7 +8791,7 @@ Workshop of Telescopes</text>
 <junction x="172.72" y="-7.62"/>
 <pinref part="SUPPLY4" gate="+12V" pin="+12V"/>
 <pinref part="U3" gate="G$1" pin="OUT"/>
-<wire x1="182.88" y1="-7.62" x2="198.12" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="-7.62" x2="213.36" y2="-7.62" width="0.1524" layer="91"/>
 <junction x="182.88" y="-7.62"/>
 </segment>
 <segment>
@@ -9580,13 +9580,13 @@ Workshop of Telescopes</text>
 <net name="RST2" class="0">
 <segment>
 <pinref part="U2" gate="G$1" pin="PC6(/RESET)"/>
-<wire x1="58.42" y1="233.68" x2="50.8" y2="233.68" width="0.1524" layer="91"/>
-<label x="50.8" y="233.68" size="1.778" layer="95"/>
+<wire x1="58.42" y1="233.68" x2="53.34" y2="233.68" width="0.1524" layer="91"/>
+<label x="53.34" y="233.68" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="ISP2" gate="G$1" pin="RST"/>
 <wire x1="-7.62" y1="170.18" x2="-10.16" y2="170.18" width="0.1524" layer="91"/>
-<label x="-10.16" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="-10.16" y="170.18" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
