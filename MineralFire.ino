@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h>
+
 
 volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
@@ -37,8 +37,7 @@ const int SW22 = 6;
 const int SW31= A0;
 const int SW32 = A1; 
 
-SoftwareSerial Serial7Segment(7, 8); //RX pin, TX pin
-char tempString[10]; //Used for sprintf
+
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -60,11 +59,7 @@ void setup() {
   
   attachInterrupt(digitalPinToInterrupt(GateInInterrupt), HandleClock, RISING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, RISING); // Note only one interrupt can be attached to an input
-  Serial.begin(9600);
-  Serial7Segment.begin(9600); //Talk to the Serial7Segment at 9600 bps
-  Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
-  Serial7Segment.print("H_H_"); //Send serial string out the soft serial port to the S7S
- 
+
   running =false;
 }
 unsigned long oldtime=0;
@@ -87,7 +82,6 @@ void Run() {
     running = true;
     CurrentDivFactor = DivFactors[DivSwitch][CurrentPtr];
     CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
-    Serial7Segment.print("R_R_"); //Send serial string out the soft serial port to the S7S
   } else {
     running = false;
   }
@@ -103,44 +97,7 @@ void SetPin(boolean state) {
 
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
-  char c4 = ' ';
-  char c3 = ' ';
-  char c2 = ' ';
-  char c1 = ' ';
-  if (A < 100){ //NUmbers greater than 100 are blank for convienience
-    if (A<=9)
-       c4 = '0' + A;
-    else 
-       c4= 'A'+(A-10);
-  }
-  if (B < 100){
-    if (B<=9)
-       c3 = '0' + B;
-    else 
-       c3= 'A'+(B-10);
-
-  }  
-  if (C < 100){
-    if (C<=9)
-       c2 = '0' + C;
-    else 
-       c2= 'A'+(C-10);
-  }
-  if (D < 100){
-    if (D<=9)
-       c1 = '0' + D;
-    else 
-       c1= 'A'+(D-10);
-  }
-
-
-  tempString[0] = c4;
-  tempString[1] = c3;
-  tempString[2] = c2;
-  tempString[3] = c1;
-  tempString[4] = '\0';
-  Serial7Segment.print(tempString);
-  //  Serial.println(tempString);
+   //Send to IC2
 }
 
 
@@ -186,8 +143,7 @@ void ReadPatternSwitches() {
 }
 
 void HandleClock() {
-  Serial7Segment.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
-  ReadPatternSwitches();
+   ReadPatternSwitches();
  
   if (running == true) {
 
