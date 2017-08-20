@@ -8,16 +8,11 @@
  * 
  * 
  */
-
-
-
-
-
 void setup() {
-  // put your setup code here, to run once:
+
 
 delay(1000);
-//   pinMode(8, OUTPUT);
+   pinMode(8, OUTPUT);
   Wire.begin();
 }
 
@@ -37,7 +32,7 @@ void loop() {
    v++;
    if (v>9)
       v=0;
-/*      
+      
 long int i=0;
 int k=0;
   for (k=0;k<10;k++){
@@ -46,7 +41,7 @@ int k=0;
     
   }
   }
-*/    
+  
 
 //  digitalWrite(pin, LOW); 
 delay (500);
