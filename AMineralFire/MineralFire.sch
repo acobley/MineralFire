@@ -8118,7 +8118,6 @@ or will meet your specific requirements.&lt;p&gt;
 <part name="SUPPLY25" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY26" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY27" library="supply2" deviceset="+5V" device=""/>
-<part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="BUT" library="INSTRUO" deviceset="PB6149L-5" device="" value="PB6149L-5"/>
 <part name="BUT1" library="INSTRUO" deviceset="PB6149L-5" device="" value="PB6149L-5"/>
 <part name="C6" library="rcl" deviceset="C-EU" device="075-032X103" value="100pf"/>
@@ -8162,12 +8161,14 @@ or will meet your specific requirements.&lt;p&gt;
 <part name="R26" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
 <part name="R28" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
 <part name="R29" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
-<part name="R27" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-1%" value="10k"/>
 <part name="R30" library="SparkFun-Resistors" deviceset="330OHM" device="-HORIZ-1/10W-5%" value="330"/>
 <part name="SUPPLY41" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="V1" library="74ttl-din" library_urn="urn:adsk.eagle:library:84" deviceset="74*09" device="N"/>
 <part name="SUPPLY28" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 <part name="SUPPLY29" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+5V" device=""/>
+<part name="D4" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="-1N4148" value="200mA/100V/1V"/>
+<part name="R27" library="SparkFun-Resistors" deviceset="100OHM" device="-HORIZ_KIT-1/4W-1%" value="100"/>
+<part name="SUPPLY42" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8262,12 +8263,11 @@ Workshop of Telescopes</text>
 <instance part="SUPPLY24" gate="GND" x="228.6" y="96.52"/>
 <instance part="SUPPLY25" gate="+5V" x="223.52" y="144.78"/>
 <instance part="SUPPLY26" gate="+5V" x="233.68" y="144.78"/>
-<instance part="SUPPLY27" gate="+5V" x="60.96" y="149.86"/>
-<instance part="GND5" gate="1" x="91.44" y="109.22"/>
+<instance part="SUPPLY27" gate="+5V" x="-10.16" y="154.94"/>
 <instance part="BUT" gate="G$1" x="73.66" y="96.52"/>
 <instance part="BUT" gate="G$2" x="256.54" y="17.78" rot="R90"/>
-<instance part="BUT1" gate="G$1" x="73.66" y="132.08"/>
-<instance part="BUT1" gate="G$2" x="30.48" y="132.08"/>
+<instance part="BUT1" gate="G$1" x="2.54" y="137.16"/>
+<instance part="BUT1" gate="G$2" x="25.4" y="127"/>
 <instance part="C6" gate="G$1" x="271.78" y="48.26" rot="R90"/>
 <instance part="Q2" gate="G$1" x="50.8" y="205.74" rot="R90"/>
 <instance part="C3" gate="G$1" x="40.64" y="210.82" rot="R270"/>
@@ -8309,14 +8309,16 @@ Workshop of Telescopes</text>
 <instance part="R26" gate="G$1" x="408.94" y="170.18" rot="R90"/>
 <instance part="R28" gate="G$1" x="426.72" y="195.58" rot="R90"/>
 <instance part="R29" gate="G$1" x="444.5" y="241.3" rot="R90"/>
-<instance part="R27" gate="G$1" x="60.96" y="142.24" rot="R90"/>
-<instance part="R30" gate="G$1" x="30.48" y="114.3" rot="R90"/>
-<instance part="SUPPLY41" gate="GND" x="30.48" y="99.06"/>
+<instance part="R30" gate="G$1" x="25.4" y="109.22" rot="R90"/>
+<instance part="SUPPLY41" gate="GND" x="25.4" y="93.98"/>
 <instance part="V1" gate="/1" x="170.18" y="66.04"/>
 <instance part="V1" gate="/+UB" x="203.2" y="73.66"/>
 <instance part="V1" gate="/-UB" x="203.2" y="63.5"/>
 <instance part="SUPPLY28" gate="GND" x="203.2" y="53.34"/>
 <instance part="SUPPLY29" gate="+5V" x="203.2" y="83.82"/>
+<instance part="D4" gate="G$1" x="40.64" y="134.62"/>
+<instance part="R27" gate="G$1" x="48.26" y="121.92" rot="R90"/>
+<instance part="SUPPLY42" gate="GND" x="48.26" y="106.68"/>
 </instances>
 <busses>
 </busses>
@@ -8548,26 +8550,19 @@ Workshop of Telescopes</text>
 <pinref part="SUPPLY33" gate="GND" pin="GND"/>
 </segment>
 <segment>
-<wire x1="83.82" y1="132.08" x2="86.36" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="132.08" x2="86.36" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="129.54" x2="86.36" y2="127" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="127" x2="86.36" y2="127" width="0.1524" layer="91"/>
-<pinref part="BUT1" gate="G$1" pin="2"/>
-<pinref part="BUT1" gate="G$1" pin="4"/>
-<pinref part="GND5" gate="1" pin="GND"/>
-<wire x1="86.36" y1="129.54" x2="91.44" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="91.44" y1="129.54" x2="91.44" y2="111.76" width="0.1524" layer="91"/>
-<junction x="86.36" y="129.54"/>
-</segment>
-<segment>
 <pinref part="R30" gate="G$1" pin="1"/>
-<wire x1="30.48" y1="109.22" x2="30.48" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="104.14" x2="25.4" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="SUPPLY41" gate="GND" pin="GND"/>
 </segment>
 <segment>
 <wire x1="203.2" y1="60.96" x2="203.2" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="V1" gate="/-UB" pin="-UB"/>
 <pinref part="SUPPLY28" gate="GND" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R27" gate="G$1" pin="1"/>
+<wire x1="48.26" y1="116.84" x2="48.26" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="SUPPLY42" gate="GND" pin="GND"/>
 </segment>
 </net>
 <net name="RST" class="0">
@@ -8738,13 +8733,20 @@ Workshop of Telescopes</text>
 <pinref part="SUPPLY40" gate="+5V" pin="+5V"/>
 </segment>
 <segment>
-<pinref part="SUPPLY27" gate="+5V" pin="+5V"/>
-<pinref part="R27" gate="G$1" pin="2"/>
-</segment>
-<segment>
 <wire x1="203.2" y1="76.2" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="V1" gate="/+UB" pin="+UB"/>
 <pinref part="SUPPLY29" gate="+5V" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="BUT1" gate="G$1" pin="1"/>
+<wire x1="-10.16" y1="137.16" x2="-7.62" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="137.16" x2="-10.16" y2="132.08" width="0.1524" layer="91"/>
+<junction x="-10.16" y="137.16"/>
+<pinref part="BUT1" gate="G$1" pin="3"/>
+<wire x1="-10.16" y1="132.08" x2="-7.62" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="SUPPLY27" gate="+5V" pin="+5V"/>
+<wire x1="-10.16" y1="137.16" x2="-10.16" y2="152.4" width="0.1524" layer="91"/>
+<junction x="-10.16" y="132.08"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -9182,17 +9184,13 @@ Workshop of Telescopes</text>
 <pinref part="V1" gate="/1" pin="B"/>
 </segment>
 <segment>
-<pinref part="R27" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="137.16" x2="60.96" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="BUT1" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="132.08" x2="63.5" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="132.08" x2="60.96" y2="127" width="0.1524" layer="91"/>
-<junction x="60.96" y="132.08"/>
-<pinref part="BUT1" gate="G$1" pin="3"/>
-<wire x1="60.96" y1="127" x2="63.5" y2="127" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="127" x2="55.88" y2="127" width="0.1524" layer="91"/>
-<junction x="60.96" y="127"/>
-<label x="55.88" y="127" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="D4" gate="G$1" pin="C"/>
+<wire x1="43.18" y1="134.62" x2="48.26" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R27" gate="G$1" pin="2"/>
+<wire x1="48.26" y1="134.62" x2="48.26" y2="127" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="134.62" x2="63.5" y2="134.62" width="0.1524" layer="91"/>
+<junction x="48.26" y="134.62"/>
+<label x="63.5" y="134.62" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -9622,7 +9620,7 @@ Workshop of Telescopes</text>
 <segment>
 <pinref part="BUT1" gate="G$2" pin="C"/>
 <pinref part="R30" gate="G$1" pin="2"/>
-<wire x1="30.48" y1="127" x2="30.48" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="121.92" x2="25.4" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BUTLED" class="0">
@@ -9631,10 +9629,22 @@ Workshop of Telescopes</text>
 <wire x1="111.76" y1="20.32" x2="129.54" y2="20.32" width="0.1524" layer="91"/>
 <label x="129.54" y="20.32" size="1.778" layer="95" xref="yes"/>
 </segment>
+</net>
+<net name="N$21" class="1">
 <segment>
+<wire x1="12.7" y1="137.16" x2="15.24" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="137.16" x2="15.24" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="134.62" x2="15.24" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="132.08" x2="15.24" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="BUT1" gate="G$1" pin="2"/>
+<pinref part="BUT1" gate="G$1" pin="4"/>
 <pinref part="BUT1" gate="G$2" pin="A"/>
-<wire x1="30.48" y1="134.62" x2="30.48" y2="144.78" width="0.1524" layer="91"/>
-<label x="30.48" y="144.78" size="1.778" layer="95" rot="R180" xref="yes"/>
+<wire x1="25.4" y1="129.54" x2="25.4" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="134.62" x2="15.24" y2="134.62" width="0.1524" layer="91"/>
+<junction x="15.24" y="134.62"/>
+<pinref part="D4" gate="G$1" pin="A"/>
+<wire x1="25.4" y1="134.62" x2="38.1" y2="134.62" width="0.1524" layer="91"/>
+<junction x="25.4" y="134.62"/>
 </segment>
 </net>
 </nets>
