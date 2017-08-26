@@ -8313,10 +8313,10 @@ Workshop of Telescopes</text>
 <instance part="R30" gate="G$1" x="-25.4" y="114.3" rot="R90"/>
 <instance part="SUPPLY41" gate="GND" x="-25.4" y="99.06"/>
 <instance part="V1" gate="/1" x="-12.7" y="71.12"/>
-<instance part="V1" gate="/+UB" x="203.2" y="73.66"/>
-<instance part="V1" gate="/-UB" x="203.2" y="63.5"/>
-<instance part="SUPPLY28" gate="GND" x="203.2" y="53.34"/>
-<instance part="SUPPLY29" gate="+5V" x="203.2" y="83.82"/>
+<instance part="V1" gate="/+UB" x="-30.48" y="48.26"/>
+<instance part="V1" gate="/-UB" x="-30.48" y="38.1"/>
+<instance part="SUPPLY28" gate="GND" x="-30.48" y="27.94"/>
+<instance part="SUPPLY29" gate="+5V" x="-30.48" y="58.42"/>
 <instance part="R27" gate="G$1" x="2.54" y="86.36" rot="R90"/>
 <instance part="R31" gate="G$1" x="-10.16" y="142.24" rot="R90"/>
 <instance part="SUPPLY42" gate="+5V" x="2.54" y="101.6"/>
@@ -8556,7 +8556,7 @@ Workshop of Telescopes</text>
 <pinref part="SUPPLY41" gate="GND" pin="GND"/>
 </segment>
 <segment>
-<wire x1="203.2" y1="60.96" x2="203.2" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="35.56" x2="-30.48" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="V1" gate="/-UB" pin="-UB"/>
 <pinref part="SUPPLY28" gate="GND" pin="GND"/>
 </segment>
@@ -8729,7 +8729,7 @@ Workshop of Telescopes</text>
 <pinref part="SUPPLY40" gate="+5V" pin="+5V"/>
 </segment>
 <segment>
-<wire x1="203.2" y1="76.2" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="50.8" x2="-30.48" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="V1" gate="/+UB" pin="+UB"/>
 <pinref part="SUPPLY29" gate="+5V" pin="+5V"/>
 </segment>
