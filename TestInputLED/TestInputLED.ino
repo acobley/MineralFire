@@ -35,7 +35,7 @@ void loop() {
     }
   }
   delay(100);
-  //digitalWrite(GateIn, LOW);
+  digitalWrite(GateIn, LOW);
   digitalWrite(GateOut, LOW);
   delay(200);
 }
