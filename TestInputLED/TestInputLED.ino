@@ -6,7 +6,7 @@
 
 */
 
-const byte GateIn = 9;
+const byte GateIn = 9; //The input LED
 const byte GateOut = 8;
 
 void setup() {
