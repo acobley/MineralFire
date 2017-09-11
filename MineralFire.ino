@@ -1,4 +1,5 @@
 
+#include <Wire.h>
 
 volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
@@ -35,7 +36,7 @@ volatile byte CurrentPtr = 0; //how far through the current Bars we are
 byte CurrentDivFactor = DivFactors[DivSwitch][CurrentPtr];
 byte CurrentPulseLength = NumberPulses[PulseSwitch][CurrentPtr];
 
-const byte GateInLED=9;
+const byte InputLED=9;
 const byte GateOut=8;
 const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
@@ -53,7 +54,7 @@ long IntMillis =0;
 void setup() {
   // initialize digital pin 13 as an output.
 
-  pinMode(GateInLED, OUTPUT);
+  pinMode(InputLED, OUTPUT);
   pinMode(GateOut, OUTPUT);
   pinMode(SW11, INPUT);
   pinMode(SW12, INPUT);
@@ -65,7 +66,7 @@ void setup() {
   
   attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, FALLING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, FALLING); // Note only one interrupt can be attached to an input
-
+Wire.begin();
 
    
   IntMillis=millis();
@@ -104,6 +105,12 @@ void Run() {
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
 //Send to IC2
+Wire.beginTransmission(8);
+   Wire.write(A); 
+   Wire.write(B);
+   Wire.write(C);
+   Wire.write(D);
+   Wire.endTransmission();
 }
 
 
@@ -184,7 +191,7 @@ void DisplayTempo(float Tempo){
 
 void HandleClock() {
    ReadPatternSwitches();
- 
+ digitalWrite(InputLED, HIGH);  
   if (running == true) {
     if (ModeSwitch==3){
       long NewTime=millis();
@@ -226,6 +233,7 @@ void HandleClock() {
       }
     }
   }
+  digitalWrite(InputLED, LOW);  
 }
 
 volatile long int work;
@@ -234,6 +242,7 @@ void Pulse() {
 
 int pin= GateOut;
    digitalWrite(pin, HIGH);  
+   
 long int i=0;
 int k=0;
   for (k=0;k<10;k++){

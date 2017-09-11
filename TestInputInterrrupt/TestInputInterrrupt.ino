@@ -54,7 +54,7 @@ int pin= GateOut;
 long int i=0;
 int k=0;
   for (k=0;k<10;k++){
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 1000; i++) {
     work= i * k; //Add some delay work
   }
   }
