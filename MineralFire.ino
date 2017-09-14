@@ -41,12 +41,15 @@ const byte GateOut=8;
 const byte interruptPin = 2;
 const byte switchinterruptPin = 3;
 
-const int SW11 = 4; //These define the two switches for selecting patterns
-const int SW12 = 5;
-const int SW21 = 7;
-const int SW22 = 6;
-const int SW31= A0;
+const int SW11 = A2; //These define the two switches for selecting patterns
+const int SW12 = A3;
+const int SW21 = 4;
+const int SW22 = 5;
+const int SW31=  A0;
 const int SW32 = A1; 
+
+const int PROG1= 6;
+const int PROG2 = 7; 
 
 long IntMillis =0;
 
@@ -62,7 +65,8 @@ void setup() {
   pinMode(SW22, INPUT);
   pinMode(SW31, INPUT);
   pinMode(SW32, INPUT);
-  
+    pinMode(PROG1, INPUT);
+      pinMode(pROG2, INPUT);
   
   attachInterrupt(digitalPinToInterrupt(interruptPin), HandleClock, FALLING);
   attachInterrupt(digitalPinToInterrupt(switchinterruptPin), Run, FALLING); // Note only one interrupt can be attached to an input
@@ -101,16 +105,17 @@ void Run() {
  
 }
 
-
+volatile byte Disp1;
+volatile byte Disp2;
+volatile byte Disp3;
+volatile byte Disp4;
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
 //Send to IC2
-Wire.beginTransmission(8);
-   Wire.write(A); 
-   Wire.write(B);
-   Wire.write(C);
-   Wire.write(D);
-   Wire.endTransmission();
+Disp1=A;
+Disp2=B;
+Disp3=C;
+Disp4=D;
 }
 
 
@@ -255,5 +260,10 @@ int k=0;
 }
 // the loop function runs over and over again forever
 void loop() {
-
+Wire.beginTransmission(8);
+   Wire.write(Disp1); 
+   Wire.write(Disp2);
+   Wire.write(Disp3);
+   Wire.write(Disp4);
+   Wire.endTransmission();
 }

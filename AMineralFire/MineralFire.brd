@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.1">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -156,6 +156,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyYjcyYjhk" projecturn="a.cGVyc29uYWw6dWUyYjcyYjhkIzIwMTcwNzE2ODQyMzYyMDE" f3durn="urn:adsk.wipprod:dm.lineage:h52N1RjcRe2_2QWi92xIDA" pcbguid="e6284b86-113b-463e-9fe1-c30167f02ad0" lastpulledtime="" lastsyncedchangeguid="25c0ce7e-b456-c062-38db-3889a9412013"/>
 <plain>
 <wire x1="0" y1="0" x2="109.86" y2="0" width="0" layer="20"/>
 <wire x1="109.86" y1="0" x2="109.86" y2="77" width="0" layer="20"/>
@@ -3708,6 +3709,11 @@ which will not be processed correctly with this version.
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
 with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports Fusion synchronisation.
+This feature will not be available in this version and saving
+the document will break the link to the Fusion PCB feature.
 </note>
 </compatibility>
 </eagle>
