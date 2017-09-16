@@ -154,10 +154,10 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
     writeDigit(Char[j]);
     int dig = Digits[j];
     digitalWrite(dig, true);
-    delay(3);
+    delay(1);
     digitalWrite(dig, false);
   }
-
+  delay(5);
  
 
 }
