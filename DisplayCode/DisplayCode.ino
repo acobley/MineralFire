@@ -156,8 +156,9 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
     digitalWrite(dig, true);
     delay(1);
     digitalWrite(dig, false);
+    delay(1);
   }
-  delay(5);
+ 
  
 
 }
