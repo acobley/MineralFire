@@ -154,7 +154,7 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
     writeDigit(Char[j]);
     int dig = Digits[j];
     digitalWrite(dig, true);
-    delay(2);
+    delay(3);
     digitalWrite(dig, false);
   }
 
@@ -165,7 +165,7 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
 
 void loop() {
 
-   DisplayNumbers(Num1,Num2,Num3,Num1);
+   DisplayNumbers(Num1,Num2,Num3,Num4);
 }
 
 void receiveEvent(int howMany){
