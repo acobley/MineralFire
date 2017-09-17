@@ -1,6 +1,9 @@
 
 #include <Wire.h>
-
+#define DivMode 3
+#define ProgMode 1
+#define TempoMode 2
+#define LiveMode 3
 volatile byte DivPulseCounter = 0;
 volatile byte NumPulseCounter = 0;
 boolean state[] = {false, false, false, false};
@@ -30,6 +33,7 @@ int Div2 = 1;
 byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
 byte ModeSwitch = 1;
+byte ProgSwitch= LiveMode;
 
 volatile byte CurrentPtr = 0; //how far through the current Bars we are
 
@@ -166,21 +170,22 @@ void ReadPatternSwitches() {
   DivSwitch = SW1 - 1;
   PulseSwitch = SW2 - 1;
   ModeSwitch = SW3;
-
-  if (ModeSwitch == 3) {
+  ProgSwitch=PROG;
+  
+  if (ModeSwitch == DivMode) {
     Div1 = Divider1[SW1 - 1];
     Div2 = Divider2[SW2 - 1];
     Divider = Div1 * Div2;
   }
 
   if (running == false) {
-    if (ModeSwitch == 3) {
+    if (ModeSwitch == DivMode) {
       DisplayNumbers(SW3, Div1, Div2, Divider);
       //DisplayNumbers(SW3, SW1, 110, SW2);
 
     }
     else {
-      DisplayNumbers(SW3, SW1, 110, SW2);
+      DisplayNumbers(SW3, 110, SW1, SW2);
     }
   }
 }
@@ -190,31 +195,44 @@ void DoSimpleDivision() {
 
 
   DivPulseCounter++;
-  //DisplayTempo(tempo);
-  DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
-  if (DivPulseCounter >= Divider) {
+if (ProgSwitch == TempoMode){
+     DisplayTempo(tempo);
+  }else{
+     DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
+  }
+  if (DivPulseCounter > Divider) {
     Pulse();
-    DivPulseCounter = 0;
+    DivPulseCounter = 1;
   }
 
 }
 
 void DisplayTempo(float Tempo) {
+  byte ss[4]={0,0,0,0};
+  int i=0;
   int iTempo = (int)(Tempo);
-  //Send to IC2
+  while (iTempo >0){  
+     ss[i] = iTempo % 10;
+     iTempo=(int)(iTempo /10);
+     i++;
+}
+     DisplayNumbers(ss[3],ss[2],ss[1],ss[0]);
+  
+  
 }
 
 
 void HandleClock() {
   digitalWrite(InputLED, HIGH);
   if (running == true) {
-    if (ModeSwitch == 3) {
+    if (ModeSwitch == DivMode) {
       long NewTime = millis();
       long tTime = NewTime - IntMillis;
       IntMillis = NewTime;
       tempo = 30.0 * ((float)1000 / (float)tTime);
 
       DoSimpleDivision();
+      //wDelay();
       digitalWrite(InputLED, LOW);
       return;
     }

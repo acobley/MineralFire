@@ -29,12 +29,10 @@ byte C[] = {CSEGA, CSEGD, CSEGE, CSEGF};
 byte D[] = {CSEGB, CSEGC, CSEGD, CSEGE, CSEGG};
 byte E[] = {CSEGA, CSEGD, CSEGE, CSEGF, CSEGG};
 byte F[] = {CSEGA, CSEGE, CSEGF, CSEGG};
-byte G[] = {CSEGA, CSEGB, CSEGC, CSEGD, CSEGE, CSEGF, CSEGG};
+byte G[] = {CSEGA, CSEGC, CSEGD, CSEGE, CSEGF};
+byte u[] = {CSEGD, };  // Code 63
+byte Num[4]={0,0,0,0};
 
-byte Num1=0;
-byte Num2=0;
-byte Num3=0;
-byte Num4=0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -62,8 +60,8 @@ void setup() {
   digitalWrite(CDIG2, false);
   digitalWrite(CDIG3, false);
   digitalWrite(CDIG4, false);
-  for(int i=0;i<200;i++){
-  DisplayNumbers(4,3,2,1);
+  for (int i=0;i <500;i++){
+   DisplayNumbers(4,3,2,1);
   }
    Wire.begin(8);  
    Wire.onReceive(receiveEvent);
@@ -138,6 +136,54 @@ void writeDigit(byte number) {
         digitalWrite(zero[i], false);
       }
       break;
+     case 10:
+      n = sizeof(A) / sizeof(A[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(A[i], false);
+      }
+      break;
+      case 11:
+      n = sizeof(B) / sizeof(B[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(B[i], false);
+      }   
+      break; 
+         case 12:
+      n = sizeof(C) / sizeof(C[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(C[i], false);
+      } 
+      break;
+        case 13:
+      n = sizeof(D) / sizeof(D[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(D[i], false);
+      } 
+      break;
+         case 14:
+      n = sizeof(E) / sizeof(E[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(E[i], false);
+      } 
+      break;
+         case 15:
+      n = sizeof(F) / sizeof(F[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(F[i], false);
+      } 
+      break;
+         case 16:
+      n = sizeof(G) / sizeof(G[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(G[i], false);
+      } 
+      break;
+         case 63:
+      n = sizeof(u) / sizeof(u[0]);
+      for (int i = 0; i < n; i++) {
+        digitalWrite(u[i], false);
+      } 
+      break;
     default:
       break;
   }
@@ -166,15 +212,15 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
 
 void loop() {
 
-   DisplayNumbers(Num1,Num2,Num3,Num4);
+   DisplayNumbers(Num[0],Num[1],Num[2],Num[3]);
 }
 
 void receiveEvent(int howMany){
   
-    Num1 = Wire.read(); // receive byte as a character
-    Num2 = Wire.read(); 
-    Num3 = Wire.read(); 
-    Num4 = Wire.read(); 
+    byte Recieved = Wire.read(); // receive byte as a character
+    byte Number = Recieved & 0X3F;
+    byte Digit = (byte) (Recieved & 0xC0) >> 6;
+    Num[Digit]=Number;
 
 
   
