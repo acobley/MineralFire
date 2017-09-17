@@ -54,11 +54,11 @@ void Pulse() {
   digitalWrite(GateOut, HIGH);
   digitalWrite(GateIn, HIGH);
 
-  delay(500);
+  delay(200);
 
 
   digitalWrite(GateOut, LOW);
   digitalWrite(GateIn, LOW);
-  delay(500);
+  delay(200);
 
 }

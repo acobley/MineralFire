@@ -60,7 +60,7 @@ void setup() {
   digitalWrite(CDIG2, false);
   digitalWrite(CDIG3, false);
   digitalWrite(CDIG4, false);
-  for (int i=0;i <500;i++){
+  for (int i=0;i <200;i++){
    DisplayNumbers(4,3,2,1);
   }
    Wire.begin(8);  
@@ -202,7 +202,7 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
     digitalWrite(dig, true);
     delay(1);
     digitalWrite(dig, false);
-    delay(1);
+    delay(2);
   }
  
  

@@ -109,17 +109,15 @@ void Run() {
 
 }
 
-volatile byte Disp1;
-volatile byte Disp2;
-volatile byte Disp3;
-volatile byte Disp4;
+volatile byte Disp[4]={0,0,0,0};
+volatile byte OldDisp[4]={0,0,0,0};
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
   //Send to IC2
-  Disp1 = A;
-  Disp2 = B;
-  Disp3 = C;
-  Disp4 = D;
+  Disp[0] = A;
+  Disp[1] = B;
+  Disp[2] = C;
+  Disp[3] = D;
 }
 
 
@@ -296,13 +294,27 @@ void wDelay() {
   }
   
 }
+
+
+//Pack for transmission, top 2 bits are segment number
+byte packDigit(byte Digit, byte Number) {
+  byte pDigit = (byte)((Digit << 6) | Number);
+  return pDigit;
+}
+
 // the loop function runs over and over again forever
 void loop() {
   ReadPatternSwitches();
-  Wire.beginTransmission(8);
-  Wire.write(Disp1);
-  Wire.write(Disp2);
-  Wire.write(Disp3);
-  Wire.write(Disp4);
-  Wire.endTransmission();
+  for (byte i = 0; i < 4; i++) {
+    Wire.beginTransmission(8);
+    if (Disp[i] !=OldDisp[i]){
+      if ((Disp[i])>=0){
+       Wire.write(packDigit(i, Disp[i]));}
+    else{
+      Wire.write(packDigit(i, 63));
+    }
+    }
+    Wire.endTransmission();
+  }
+
 }
