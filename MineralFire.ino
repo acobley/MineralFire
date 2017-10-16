@@ -33,7 +33,7 @@ int Div2 = 1;
 byte DivSwitch = 0; //Used to set the pattern by the switches
 byte PulseSwitch = 0;
 byte ModeSwitch = 1;
-byte ProgSwitch= LiveMode;
+byte ProgSwitch = LiveMode;
 
 volatile byte CurrentPtr = 0; //how far through the current Bars we are
 
@@ -56,6 +56,9 @@ const int PROG1 = 6;
 const int PROG2 = 7;
 
 long IntMillis = 0;
+
+byte Disp[4] = {0, 0, 0, 0};
+byte OldDisp[4] = {15, 15, 15, 15};
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -109,11 +112,10 @@ void Run() {
 
 }
 
-volatile byte Disp[4]={0,0,0,0};
-volatile byte OldDisp[4]={0,0,0,0};
+
 
 void DisplayNumbers(byte A, byte B, byte C, byte  D) {
-  //Send to IC2
+
   Disp[0] = A;
   Disp[1] = B;
   Disp[2] = C;
@@ -168,8 +170,8 @@ void ReadPatternSwitches() {
   DivSwitch = SW1 - 1;
   PulseSwitch = SW2 - 1;
   ModeSwitch = SW3;
-  ProgSwitch=PROG;
-  
+  ProgSwitch = PROG;
+
   if (ModeSwitch == DivMode) {
     Div1 = Divider1[SW1 - 1];
     Div2 = Divider2[SW2 - 1];
@@ -193,10 +195,10 @@ void DoSimpleDivision() {
 
 
   DivPulseCounter++;
-if (ProgSwitch == TempoMode){
-     DisplayTempo(tempo);
-  }else{
-     DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
+  if (ProgSwitch == TempoMode) {
+    DisplayTempo(tempo);
+  } else {
+    DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
   }
   if (DivPulseCounter > Divider) {
     Pulse();
@@ -206,17 +208,17 @@ if (ProgSwitch == TempoMode){
 }
 
 void DisplayTempo(float Tempo) {
-  byte ss[4]={0,0,0,0};
-  int i=0;
+  byte ss[4] = {0, 0, 0, 0};
+  int i = 0;
   int iTempo = (int)(Tempo);
-  while (iTempo >0){  
-     ss[i] = iTempo % 10;
-     iTempo=(int)(iTempo /10);
-     i++;
-}
-     DisplayNumbers(ss[3],ss[2],ss[1],ss[0]);
-  
-  
+  while (iTempo > 0) {
+    ss[i] = iTempo % 10;
+    iTempo = (int)(iTempo / 10);
+    i++;
+  }
+  DisplayNumbers(ss[3], ss[2], ss[1], ss[0]);
+
+
 }
 
 
@@ -284,7 +286,7 @@ void Pulse() {
 }
 
 void wDelay() {
-  
+
   long int i = 0;
   int k = 0;
   for (k = 0; k < 10; k++) {
@@ -292,7 +294,7 @@ void wDelay() {
       work = i * k; //Add some delay work
     }
   }
-  
+
 }
 
 
@@ -306,15 +308,17 @@ byte packDigit(byte Digit, byte Number) {
 void loop() {
   ReadPatternSwitches();
   for (byte i = 0; i < 4; i++) {
-    Wire.beginTransmission(8);
-    if (Disp[i] !=OldDisp[i]){
-      if ((Disp[i])>=0){
-       Wire.write(packDigit(i, Disp[i]));}
-    else{
-      Wire.write(packDigit(i, 63));
-    }
-    }
-    Wire.endTransmission();
-  }
 
+    if (Disp[i] != OldDisp[i]) {
+      Wire.beginTransmission(8);
+      if (Disp[i] >= 0) {
+        Wire.write(packDigit(i, OldDisp[i]));
+      }
+      else {
+        Wire.write(packDigit(i, 63));
+      }
+      Wire.endTransmission();
+      OldDisp[i] = Disp[i];
+    }
+  }
 }

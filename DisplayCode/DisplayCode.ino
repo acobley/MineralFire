@@ -31,7 +31,7 @@ byte E[] = {CSEGA, CSEGD, CSEGE, CSEGF, CSEGG};
 byte F[] = {CSEGA, CSEGE, CSEGF, CSEGG};
 byte G[] = {CSEGA, CSEGC, CSEGD, CSEGE, CSEGF};
 byte u[] = {CSEGD, };  // Code 63
-byte Num[4]={0,0,0,0};
+byte Num[4]={7,7,7,7};
 
 
 void setup() {
@@ -202,7 +202,7 @@ void DisplayNumbers(byte A, byte B, byte C, byte  D) {
     digitalWrite(dig, true);
     delay(1);
     digitalWrite(dig, false);
-    delay(2);
+    delay(4);
   }
  
  
