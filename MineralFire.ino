@@ -19,7 +19,7 @@ int NumberPulses[3][8] = {{8, 8, 4, 8,8, 8, 4, 8},
 
 int DataLength=8;
 
-int Divider1[]={1,2,3}; //Adjusted for the logic of the switches
+int Divider1[]={4,8,16}; //Adjusted for the logic of the switches
 int Divider2[]={1,2,4};
 int Divider=1;
 
@@ -206,7 +206,7 @@ void ReadPatternSwitches() {
 
   if (running == false) {
     if (ModeSwitch==3){
-       DisplayNumbers(SW3, Div1,Div2,Divider);
+       DisplayNumbers(110, 110,(byte)Divider/10,(byte) Divider %10);
        //DisplayNumbers(SW3, SW1, 110, SW2);
     
     }
@@ -221,8 +221,11 @@ void DoSimpleDivision(){
 
     
       DivPulseCounter++;
-       DisplayTempo(tempo);
-      //DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
+       //DisplayTempo(tempo);
+      DisplayNumbers((byte)DivPulseCounter/10,(byte) DivPulseCounter %10,(byte)Divider/10,(byte) Divider %10);
+ 
+      //
+      DisplayNumbers(DivPulseCounter, Div1, Div2, Divider);
       if (DivPulseCounter >= Divider) {
         Pulse();
         DivPulseCounter = 0;
