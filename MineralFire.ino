@@ -224,6 +224,7 @@ void DisplayTempo(float Tempo) {
 
 void HandleClock() {
   digitalWrite(InputLED, HIGH);
+  sei();
   if (running == true) {
     if (ModeSwitch == DivMode) {
       long NewTime = millis();
@@ -234,6 +235,7 @@ void HandleClock() {
       DoSimpleDivision();
       //wDelay();
       digitalWrite(InputLED, LOW);
+      cli();
       return;
     }
     DisplayNumbers(CurrentPtr, CurrentPulseLength, CurrentDivFactor, DivPulseCounter);
@@ -269,6 +271,7 @@ void HandleClock() {
   }
   wDelay();
   digitalWrite(InputLED, LOW);
+  cli();
 }
 
 volatile long int work;
