@@ -13,9 +13,20 @@ void setup() {
   delay(2000);
   pinMode(GateIn, OUTPUT);
   pinMode(GateOut, OUTPUT);
+     attachInterrupt(digitalPinToInterrupt(GateInInterrupt), HandleClock,FALLING );
+
   Wire.begin();
 }
+volatile int Count=0;
 
+void HandleClock(){
+ 
+  Count++;
+  if (Count>15)
+      Count=0;
+  Pulse();
+
+}
 
 
 byte packDigit(byte Digit, byte Number) {
