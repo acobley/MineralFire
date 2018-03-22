@@ -156,7 +156,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyYjcyYjhk" projecturn="a.cGVyc29uYWw6dWUyYjcyYjhkIzIwMTcwNzE2ODQyMzYyMDE" f3durn="urn:adsk.wipprod:dm.lineage:h52N1RjcRe2_2QWi92xIDA" pcbguid="e6284b86-113b-463e-9fe1-c30167f02ad0" lastpulledtime="" lastsyncedchangeguid="b16e618b-92c1-20ca-db7c-6acde712e21b"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyYjcyYjhk" projecturn="a.cGVyc29uYWw6dWUyYjcyYjhkIzIwMTcwNzE2ODQyMzYyMDE" f3durn="urn:adsk.wipprod:dm.lineage:h52N1RjcRe2_2QWi92xIDA" pcbguid="e6284b86-113b-463e-9fe1-c30167f02ad0" lastpulledtime="" lastsyncedchangeguid="b5949f9a-7d6e-72dc-6d4f-6711ad8edb90"/>
 <plain>
 <wire x1="0" y1="0" x2="109.86" y2="0" width="0" layer="20"/>
 <wire x1="109.86" y1="0" x2="109.86" y2="77" width="0" layer="20"/>
@@ -168,9 +168,9 @@ Display based on SparkFun
 OpenSegment Serial Display </text>
 <text x="106.68" y="73.66" size="1.9304" layer="26" rot="MR0">From the Workshop of Telescopes</text>
 <text x="5.08" y="27.94" size="2.54" layer="26" font="vector" rot="MR270">Mineral Fire</text>
-<text x="64.77" y="73.66" size="1.778" layer="26" rot="MR0">V0.3 SMD</text>
+<text x="55.88" y="73.66" size="1.778" layer="26" rot="MR0">V0.3 SMD</text>
 <text x="109.22" y="13.97" size="1.778" layer="26" rot="MR270">@R2Project
-2017</text>
+2018</text>
 </plain>
 <libraries>
 <library name="SparkFun-Capacitors">
