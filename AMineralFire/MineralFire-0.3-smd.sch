@@ -19880,6 +19880,10 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <part name="SUPPLY22" library="supply2" deviceset="+5V" device=""/>
 <part name="U4" library="SparkFun-IC-Microcontroller" deviceset="ATMEGA328P_TQFP" device="" value="ATMEGA328P_TQFP"/>
 <part name="U1" library="SparkFun-IC-Microcontroller" deviceset="ATMEGA328P_TQFP" device="" value="ATMEGA328P_TQFP"/>
+<part name="R36" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4k7"/>
+<part name="R37" library="SparkFun-Resistors" deviceset="1KOHM" device="-0603-1/10W-1%" value="4k7"/>
+<part name="SUPPLY23" library="supply2" deviceset="+5V" device=""/>
+<part name="SUPPLY44" library="supply2" deviceset="+5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -20043,6 +20047,10 @@ Workshop of Telescopes</text>
 <instance part="SUPPLY22" gate="+5V" x="337.82" y="76.2"/>
 <instance part="U4" gate="U$1" x="83.82" y="203.2"/>
 <instance part="U1" gate="U$1" x="88.9" y="38.1"/>
+<instance part="R36" gate="G$1" x="147.32" y="60.96" rot="R270"/>
+<instance part="R37" gate="G$1" x="160.02" y="60.96" rot="R270"/>
+<instance part="SUPPLY23" gate="+5V" x="147.32" y="76.2"/>
+<instance part="SUPPLY44" gate="+5V" x="160.02" y="76.2"/>
 </instances>
 <busses>
 </busses>
@@ -20510,6 +20518,16 @@ Workshop of Telescopes</text>
 <pinref part="IC3" gate="P" pin="V+"/>
 <wire x1="337.82" y1="68.58" x2="337.82" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="SUPPLY22" gate="+5V" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="SUPPLY23" gate="+5V" pin="+5V"/>
+<pinref part="R36" gate="G$1" pin="1"/>
+<wire x1="147.32" y1="73.66" x2="147.32" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SUPPLY44" gate="+5V" pin="+5V"/>
+<pinref part="R37" gate="G$1" pin="1"/>
+<wire x1="160.02" y1="73.66" x2="160.02" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -21011,6 +21029,11 @@ Workshop of Telescopes</text>
 <label x="111.76" y="223.52" size="1.778" layer="95" xref="yes"/>
 <pinref part="U4" gate="U$1" pin="PC4(ADC4/SDA)"/>
 </segment>
+<segment>
+<pinref part="R36" gate="G$1" pin="2"/>
+<wire x1="147.32" y1="55.88" x2="147.32" y2="50.8" width="0.1524" layer="91"/>
+<label x="147.32" y="50.8" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
@@ -21022,6 +21045,11 @@ Workshop of Telescopes</text>
 <wire x1="106.68" y1="220.98" x2="111.76" y2="220.98" width="0.1524" layer="91"/>
 <label x="111.76" y="220.98" size="1.778" layer="95" xref="yes"/>
 <pinref part="U4" gate="U$1" pin="PC5(ADC5/SCL)"/>
+</segment>
+<segment>
+<pinref part="R37" gate="G$1" pin="2"/>
+<wire x1="160.02" y1="55.88" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
+<label x="160.02" y="50.8" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="C-SEGB" class="0">
