@@ -156,20 +156,20 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyYjcyYjhk" projecturn="a.cGVyc29uYWw6dWUyYjcyYjhkIzIwMTgwMzMxMTI1NDI1ODAx" f3durn="urn:adsk.wipprod:dm.lineage:GiBeiiCMS92ebt5DWTYfzA" pcbguid="e62dc527-8954-4e3e-9269-dedffcad4fd1" lastpulledtime="" lastsyncedchangeguid="666c5b18-7edd-9f51-bd1e-f1b89eb90030"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyYjcyYjhk" projecturn="a.cGVyc29uYWw6dWUyYjcyYjhkIzIwMTgwMzMxMTI1NDI1ODAx" f3durn="urn:adsk.wipprod:dm.lineage:GiBeiiCMS92ebt5DWTYfzA" pcbguid="e62dc527-8954-4e3e-9269-dedffcad4fd1" lastpulledtime="" lastsyncedchangeguid="19e74fdb-d8b6-7009-e861-4ceb511ccb90"/>
 <plain>
 <wire x1="0" y1="0" x2="95.89" y2="0" width="0" layer="20"/>
 <wire x1="95.89" y1="0" x2="95.89" y2="68.11" width="0" layer="20"/>
 <wire x1="95.89" y1="68.11" x2="0" y2="68.11" width="0" layer="20"/>
 <wire x1="0" y1="68.11" x2="0" y2="0" width="0" layer="20"/>
-<text x="87.63" y="15.24" size="1.016" layer="26" rot="MR270" align="center">Designed by Andy C
+<text x="88.9" y="25.4" size="1.016" layer="26" rot="MR270" align="center">Designed by Andy C
 Hardware inspired by GMSN! ADSR
 Display based on SparkFun
 OpenSegment Serial Display </text>
 <text x="3.81" y="57.15" size="1.9304" layer="26" rot="MR270">From the Workshop of Telescopes</text>
-<text x="40.64" y="26.67" size="2.54" layer="26" font="vector" rot="MR270">Mineral Fire</text>
-<text x="92.71" y="16.51" size="1.778" layer="26" rot="MR90">V0.3 SMD</text>
-<text x="95.25" y="13.97" size="1.778" layer="26" rot="MR270">@R2Project
+<text x="95.25" y="66.04" size="2.54" layer="26" font="vector" rot="MR270">Mineral Fire</text>
+<text x="92.71" y="27.94" size="1.778" layer="26" rot="MR90">V0.3 SMD</text>
+<text x="93.98" y="15.24" size="1.778" layer="26" rot="MR270">@R2Project
 2018</text>
 </plain>
 <libraries>
